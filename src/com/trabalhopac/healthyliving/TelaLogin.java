@@ -5,6 +5,9 @@
  */
 package com.trabalhopac.healthyliving;
 
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 /**
  *
  * @author Carlos, Suellen, Vitor e Ícaro
@@ -15,6 +18,12 @@ public class TelaLogin extends javax.swing.JFrame {
      * Creates new form mainWindow
      */
     public TelaLogin() {
+	
+	try {  
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+	    SwingUtilities.updateComponentTreeUI(this);
+        } catch (Exception e) { e.printStackTrace(); }
+	
         initComponents();
     }
 
@@ -186,11 +195,9 @@ public class TelaLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> {
+	    new TelaLogin().setVisible(true);
+	});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

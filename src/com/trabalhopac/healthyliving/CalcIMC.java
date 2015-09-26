@@ -17,7 +17,8 @@ public class CalcIMC extends javax.swing.JFrame {
      * Creates new form Janela
      */
     public CalcIMC() {
-        initComponents();
+	
+	initComponents();
     }
 
     /**
@@ -41,7 +42,7 @@ public class CalcIMC extends javax.swing.JFrame {
         jLResultado = new javax.swing.JLabel();
         jLImc = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setToolTipText("Cálculo de IMC");
         jPanel1.setName(""); // NOI18N
@@ -180,7 +181,15 @@ public class CalcIMC extends javax.swing.JFrame {
             resultado = "Abaixo do peso.";
         else if (imc > 18.5 && imc < 25)
             resultado = "Peso normal.";
-        
+	else if (imc >= 25 && imc < 30)	
+	    resultado = "Sobrepeso.";
+	else if (imc >= 30 && imc < 35)	
+	    resultado = "Obesidade I.";
+	else if (imc >= 35 && imc < 40)	
+	    resultado = "Obesidade II (severa).";
+	else if (imc >= 40)	
+	    resultado = "Obesidade III (mórbita).";
+	
         return resultado;
         
     }
@@ -212,13 +221,13 @@ public class CalcIMC extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+	
+	//EstiloJanelas.pegaNimbus();
+	
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CalcIMC().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> {
+	    new CalcIMC().setVisible(true);
+	});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
