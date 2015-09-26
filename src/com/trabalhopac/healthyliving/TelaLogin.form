@@ -59,10 +59,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblUser" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtUser" linkSize="1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="txtUser" linkSize="2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                           <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPassword" linkSize="1" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                           <Component id="btnLogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPass" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -78,10 +78,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnLogin" min="-2" pref="41" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="106" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -105,7 +105,7 @@
                 <Property name="text" type="java.lang.String" value="Senha"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtPassword">
+            <Component class="javax.swing.JPasswordField" name="txtPass">
             </Component>
             <Component class="javax.swing.JButton" name="btnLogin">
               <Properties>

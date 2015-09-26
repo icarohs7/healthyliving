@@ -7,7 +7,7 @@ package com.trabalhopac.healthyliving;
 
 /**
  *
- * @author icaro
+ * @author Carlos, Suellen, Vitor e Ícaro
  */
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -32,7 +32,7 @@ public class TelaLogin extends javax.swing.JFrame {
         lblUser = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
+        txtPass = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblDicaDoDia = new javax.swing.JLabel();
@@ -63,12 +63,12 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(lblUser)
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLogin))
+                    .addComponent(btnLogin)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtPassword, txtUser});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtPass, txtUser});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,10 +80,10 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -143,8 +143,18 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        new Main().setVisible(true);
-        this.setVisible(false);
+	
+	if (true) { //Aqui vai entrar a condição do login
+	    
+	    new Main().setVisible(true);
+	    this.setVisible(false);
+	    
+	} else {
+	    
+	    //Mensagem de erro caso dê errado
+	    
+	}
+	
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -192,7 +202,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblDicaDoDia;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
