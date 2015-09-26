@@ -5,9 +5,6 @@
  */
 package com.trabalhopac.healthyliving;
 
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
 /**
  *
  * @author Carlos, Suellen, Vitor e Ícaro
@@ -18,12 +15,6 @@ public class TelaLogin extends javax.swing.JFrame {
      * Creates new form mainWindow
      */
     public TelaLogin() {
-	
-	try {  
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-	    SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception e) { e.printStackTrace(); }
-	
         initComponents();
     }
 
@@ -177,7 +168,7 @@ public class TelaLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("GTK+".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
