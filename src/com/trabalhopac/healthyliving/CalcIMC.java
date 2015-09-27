@@ -12,7 +12,7 @@ package com.trabalhopac.healthyliving;
 public class CalcIMC extends javax.swing.JFrame {
 
     float altura, massa, imc;
-    
+
     //Creates new form CalcIMC
     public CalcIMC() {
 	initComponents();
@@ -159,36 +159,37 @@ public class CalcIMC extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        altura = Float.valueOf(jTAltura.getText()); //Recebe o texto do campo altura
-        massa = Float.valueOf(jTMassa.getText()); //Recebe o texto do campo altura
-        
-        imc = massa / (altura * altura); //Calcula o imc
-        
+
+	altura = Float.valueOf(jTAltura.getText()); //Recebe o texto do campo altura
+	massa = Float.valueOf(jTMassa.getText()); //Recebe o texto do campo altura
+
+	imc = massa / (altura * altura); //Calcula o imc
+
 	jLImc.setText(String.valueOf(imc)); //Seta o resultado no label
-        jLResultado.setText(resultado(imc)); //Seta a resposta no label
-	
+	jLResultado.setText(resultado(imc)); //Seta a resposta no label
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public String resultado(float imc) {
-        
-        String resultado = null;
-        
-        if (imc <= 18.5)
-            resultado = "Abaixo do peso.";
-        else if (imc > 18.5 && imc < 25)
-            resultado = "Peso normal.";
-	else if (imc >= 25 && imc < 30)	
+
+	String resultado = null;
+
+	if (imc <= 18.5) {
+	    resultado = "Abaixo do peso.";
+	} else if (imc > 18.5 && imc < 25) {
+	    resultado = "Peso normal.";
+	} else if (imc >= 25 && imc < 30) {
 	    resultado = "Sobrepeso.";
-	else if (imc >= 30 && imc < 35)	
+	} else if (imc >= 30 && imc < 35) {
 	    resultado = "Obesidade I.";
-	else if (imc >= 35 && imc < 40)	
+	} else if (imc >= 35 && imc < 40) {
 	    resultado = "Obesidade II (severa).";
-	else if (imc >= 40)	
+	} else if (imc >= 40) {
 	    resultado = "Obesidade III (mórbita).";
-	
-        return resultado;
-        
+	}
+
+	return resultado;
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
