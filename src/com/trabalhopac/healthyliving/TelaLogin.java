@@ -5,15 +5,19 @@
  */
 package com.trabalhopac.healthyliving;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos, Suellen, Vitor e Ícaro
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form mainWindow
-     */
+    //Chama a classe de conexão ao Banco de Dados
+    ConexaoMySQL conexaoBanco = new ConexaoMySQL();
+    
+    //Creates new form TelaLogin
     public TelaLogin() {
         initComponents();
     }
@@ -144,17 +148,35 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 	
-	if (true) { //Aqui vai entrar a condição do login
+	try {
+
+	    conexaoBanco.conexao();
+	    conexaoBanco.stmt = conexaoBanco.con.createStatement();
+
+	    //Consulta MySQL
+	    String SQL = "SELECT * from Users";
+
+	    conexaoBanco.res = conexaoBanco.stmt.executeQuery(SQL);
+	    conexaoBanco.res.first();
 	    
-	    new Main().setVisible(true);
-	    this.setVisible(false);
-	    
-	} else {
-	    
-	    //Mensagem de erro caso dê errado
+	    //Aqui vai entrar a condição do login
+	    if (txtUser.getText().equals(conexaoBanco.res.getString("User"))
+		    && txtPass.getText().equals(conexaoBanco.res.getString("Pass"))) {
+
+		new Main().setVisible(true); //Tona a janela Main visível
+		this.setVisible(false); //Torna a Janela atual invísivel
+
+	    } else {
+		
+		//Abre uma mensagem de erro
+		JOptionPane.showMessageDialog(null, "Usuário o senha incorreto!");
+
+	    }
+	
+	} catch (SQLException e) {
 	    
 	}
-	
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
