@@ -171,12 +171,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	    conBanco.login(txtUser.getText(), txtPass.getText());
 
-	    if (txtUser.getText().equals(conBanco.res.getString("User"))
-		    && txtPass.getText().equals(conBanco.res.getString("Pass"))) {
+	    if (conBanco.res.getRow() == 1) {
 
 		new Main(conBanco.res.getString("Name")).setVisible(true); //Tona a janela Main visível
-		this.setVisible(false); //Torna a Janela atual invísivel
-
+		dispose(); //Fecha a Janela atual
+		
 	    } else {
 
 		//Abre uma mensagem de erro

@@ -39,6 +39,7 @@ public class CalcIMC extends javax.swing.JFrame {
         jLResultado = new javax.swing.JLabel();
         jLImc = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setToolTipText("Cálculo de IMC");
