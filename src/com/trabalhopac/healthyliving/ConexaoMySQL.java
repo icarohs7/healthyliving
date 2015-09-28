@@ -33,8 +33,6 @@ public class ConexaoMySQL {
 	    //Comando MySQL
 	    String SQL = "SELECT * FROM `Users` WHERE `User` = '" + login + "' && `Pass` = '" + senha + "'";
 
-	    System.out.println(SQL);
-
 	    //Executa o comando MySQL
 	    res = stmt.executeQuery(SQL);
 	    res.first();
