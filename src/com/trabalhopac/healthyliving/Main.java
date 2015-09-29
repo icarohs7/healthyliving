@@ -11,12 +11,15 @@ package com.trabalhopac.healthyliving;
  */
 public class Main extends javax.swing.JFrame {
 
+    ArquivoUsuario arquivo = new ArquivoUsuario();
+
     //Creates new form Main
-    public Main(String usuario) {
+    public Main() {
 
 	initComponents();
 
-	BoasVindas.setText("Olá " + usuario);
+	//Pega o Escrever gravado no arquivo, e forma a mensagem de boas vindas
+	BoasVindas.setText("Olá " + arquivo.Ler());
 
     }
 
@@ -167,6 +170,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
 
+	arquivo.LogoutUser();
 	new TelaLogin().setVisible(true); //Torna a janela TelaLogin visível
 	dispose(); //Fecha a Janela atual
 
