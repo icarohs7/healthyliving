@@ -16,6 +16,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     //Chama as Classes
     ConexaoMySQL conBanco = new ConexaoMySQL();
+    ArquivoUsuario arquivo = new ArquivoUsuario();
 
     //Creates new form TelaLogin
     public TelaLogin() {
@@ -171,11 +172,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	    conBanco.login(txtUser.getText(), txtPass.getText());
 
+	    //Verifica se existe alguma linha no banco com o usuário e senha informado
 	    if (conBanco.res.getRow() == 1) {
 
-		new Main(conBanco.res.getString("Name")).setVisible(true); //Tona a janela Main visível
+		arquivo.Escrever(conBanco.res.getString("Name"));
+		new Main().setVisible(true); //Tona a janela Main visível
 		dispose(); //Fecha a Janela atual
-		
+
 	    } else {
 
 		//Abre uma mensagem de erro
@@ -193,8 +196,11 @@ public class TelaLogin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-	/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+
+	ArquivoUsuario arquivo = new ArquivoUsuario();
+
+	//Look and feel do programa
+	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
 	 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 	 */
@@ -205,22 +211,17 @@ public class TelaLogin extends javax.swing.JFrame {
 		    break;
 		}
 	    }
-	} catch (ClassNotFoundException ex) {
-	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	} catch (InstantiationException ex) {
-	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	} catch (IllegalAccessException ex) {
-	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
 	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 	}
-        //</editor-fold>
 	//</editor-fold>
 
-	/* Create and display the form */
-	java.awt.EventQueue.invokeLater(() -> {
+	if (arquivo.CheckUser()) {
+	    new Main().setVisible(true);
+	} else {
 	    new TelaLogin().setVisible(true);
-	});
+	}
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
