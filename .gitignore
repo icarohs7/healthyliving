@@ -13,3 +13,6 @@ hs_err_pid*
 /dist/
 /build/
 /nbproject/private/
+
+# Arquivo de usuário #
+userdata.dat

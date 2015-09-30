@@ -44,6 +44,7 @@ public class Main extends javax.swing.JFrame {
         BoasVindas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Healthy Living");
 
         btnIMC.setText("Calculadora de IMC");
         btnIMC.addActionListener(new java.awt.event.ActionListener() {

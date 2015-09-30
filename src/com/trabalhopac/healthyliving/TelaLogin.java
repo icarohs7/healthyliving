@@ -46,6 +46,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Healthy Living");
+        setResizable(false);
 
         lblUser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblUser.setText("Login");
