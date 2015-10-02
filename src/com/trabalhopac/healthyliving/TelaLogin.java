@@ -6,6 +6,7 @@
 package com.trabalhopac.healthyliving;
 
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
@@ -56,6 +57,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         lblPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblPassword.setText("Senha");
+
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
 
         btnLogin.setText("Entrar");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,11 +177,28 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
+	LoginUser();
+
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+
+	//Se o usuário pressionar enter na tela de login
+	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+	    LoginUser();
+
+	}
+
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    void LoginUser() {
+
 	try {
 
 	    conBanco.login(txtUser.getText(), txtPass.getText());
 
-	    //Verifica se existe alguma linha no banco com o usuário e senha informado
+	    //Se a variável for igual a true
 	    if (conBanco.login) {
 
 		arquivo.Escrever(conBanco.nome); //Recebe o nome do usuário e grava no arquivo
@@ -192,7 +216,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	}
 
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }
 
     /**
      * @param args the command line arguments
