@@ -5,8 +5,10 @@
  */
 package com.trabalhopac.healthyliving;
 
-import java.sql.SQLException;
+import java.awt.HeadlessException;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import org.json.JSONException;
 
 /**
  *
@@ -15,7 +17,7 @@ import javax.swing.JOptionPane;
 public class TelaLogin extends javax.swing.JFrame {
 
     //Chama as Classes
-    ConexaoMySQL conBanco = new ConexaoMySQL();
+    ConexaoHTTP conBanco = new ConexaoHTTP();
     ArquivoUsuario arquivo = new ArquivoUsuario();
 
     //Creates new form TelaLogin
@@ -173,9 +175,9 @@ public class TelaLogin extends javax.swing.JFrame {
 	    conBanco.login(txtUser.getText(), txtPass.getText());
 
 	    //Verifica se existe alguma linha no banco com o usuário e senha informado
-	    if (conBanco.res.getRow() == 1) {
+	    if (conBanco.login) {
 
-		arquivo.Escrever(conBanco.res.getString("Name"));
+		arquivo.Escrever(conBanco.nome); //Recebe o nome do usuário e grava no arquivo
 		new Main().setVisible(true); //Tona a janela Main visível
 		dispose(); //Fecha a Janela atual
 
@@ -186,7 +188,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	    }
 
-	} catch (SQLException e) {
+	} catch (IOException | JSONException | HeadlessException e) {
 
 	}
 
