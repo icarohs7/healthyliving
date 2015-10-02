@@ -5,8 +5,10 @@
  */
 package com.trabalhopac.healthyliving;
 
-import java.sql.SQLException;
+import java.awt.HeadlessException;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import org.json.JSONException;
 
 /**
  *
@@ -15,7 +17,7 @@ import javax.swing.JOptionPane;
 public class TelaLogin extends javax.swing.JFrame {
 
     //Chama as Classes
-    ConexaoMySQL conBanco = new ConexaoMySQL();
+    ConexaoHTTP conBanco = new ConexaoHTTP();
     ArquivoUsuario arquivo = new ArquivoUsuario();
 
     //Creates new form TelaLogin
@@ -130,10 +132,8 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblDicaDoDia)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
+                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDicaDoDia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -142,7 +142,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblDicaDoDia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
         );
 
@@ -154,14 +154,14 @@ public class TelaLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -175,9 +175,9 @@ public class TelaLogin extends javax.swing.JFrame {
 	    conBanco.login(txtUser.getText(), txtPass.getText());
 
 	    //Verifica se existe alguma linha no banco com o usuário e senha informado
-	    if (conBanco.res.getRow() == 1) {
+	    if (conBanco.login) {
 
-		arquivo.Escrever(conBanco.res.getString("Name"));
+		arquivo.Escrever(conBanco.nome); //Recebe o nome do usuário e grava no arquivo
 		new Main().setVisible(true); //Tona a janela Main visível
 		dispose(); //Fecha a Janela atual
 
@@ -188,7 +188,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	    }
 
-	} catch (SQLException e) {
+	} catch (IOException | JSONException | HeadlessException e) {
 
 	}
 

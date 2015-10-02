@@ -35,6 +35,7 @@ public class Main extends javax.swing.JFrame {
         pnlPai = new javax.swing.JTabbedPane();
         mtlayerpnlFerramentas = new javax.swing.JLayeredPane();
         btnIMC = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         mtlayerpnlNutricao = new javax.swing.JLayeredPane();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -53,6 +54,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Controle de Calorias");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout mtlayerpnlFerramentasLayout = new javax.swing.GroupLayout(mtlayerpnlFerramentas);
         mtlayerpnlFerramentas.setLayout(mtlayerpnlFerramentasLayout);
         mtlayerpnlFerramentasLayout.setHorizontalGroup(
@@ -60,16 +68,21 @@ public class Main extends javax.swing.JFrame {
             .addGroup(mtlayerpnlFerramentasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         mtlayerpnlFerramentasLayout.setVerticalGroup(
             mtlayerpnlFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mtlayerpnlFerramentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGroup(mtlayerpnlFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnIMC, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         mtlayerpnlFerramentas.setLayer(btnIMC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlFerramentas.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         pnlPai.addTab("Ferramentas", mtlayerpnlFerramentas);
 
@@ -177,12 +190,17 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        new controledecalorias().setVisible(true); //Torna a janela controledecalorias visível
+    }//GEN-LAST:event_jButton2MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel BoasVindas;
     private javax.swing.JButton btnIMC;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLayeredPane mtlayerpnlFerramentas;
