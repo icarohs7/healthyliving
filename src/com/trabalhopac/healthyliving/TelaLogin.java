@@ -87,6 +87,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Esqueceu sua senha?");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -200,9 +205,17 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         
-        link.browse("http://www.healthyliving.pe.hu/?url=cadastro");
+        //Abre o navegador na tela de Cadastro
+        link.browse("http://healthyliving.aduv.com.br/?url=cadastro");
         
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        
+        //Abre o navegado na tela de Restauração de Senha
+        link.browse("http://healthyliving.aduv.com.br/?url=passreset");
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     void LoginUser() {
 
