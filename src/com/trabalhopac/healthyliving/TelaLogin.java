@@ -5,9 +5,14 @@
  */
 package com.trabalhopac.healthyliving;
 
+import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
 
@@ -76,6 +81,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Cadastre-se");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 102, 255));
@@ -191,6 +201,22 @@ public class TelaLogin extends javax.swing.JFrame {
 	}
 
     }//GEN-LAST:event_txtPassKeyPressed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+            Desktop desktop = null;  
+    desktop = Desktop.getDesktop();  
+    URI uri = null;  
+    try {  
+               uri = new URI("http://healthyliving.pe.hu/?url=cadastro");  
+               desktop.browse(uri);  
+    }  
+    catch(IOException ioe) {  
+               ioe.printStackTrace();  
+    }  
+    catch(URISyntaxException use) {  
+               use.printStackTrace();  
+    }  
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     void LoginUser() {
 
