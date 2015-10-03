@@ -6,6 +6,7 @@
 package com.trabalhopac.healthyliving;
 
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
@@ -19,10 +20,11 @@ public class TelaLogin extends javax.swing.JFrame {
     //Chama as Classes
     ConexaoHTTP conBanco = new ConexaoHTTP();
     ArquivoUsuario arquivo = new ArquivoUsuario();
+    Hyperlink link = new Hyperlink();
 
     //Creates new form TelaLogin
     public TelaLogin() {
-	initComponents();
+        initComponents();
     }
 
     /**
@@ -57,6 +59,12 @@ public class TelaLogin extends javax.swing.JFrame {
         lblPassword.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblPassword.setText("Senha");
 
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
+
         btnLogin.setText("Entrar");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +77,21 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Cadastre-se");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Esqueceu sua senha?");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,59 +188,90 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-	try {
-
-	    conBanco.login(txtUser.getText(), txtPass.getText());
-
-	    //Verifica se existe alguma linha no banco com o usuário e senha informado
-	    if (conBanco.login) {
-
-		arquivo.Escrever(conBanco.nome); //Recebe o nome do usuário e grava no arquivo
-		new Main().setVisible(true); //Tona a janela Main visível
-		dispose(); //Fecha a Janela atual
-
-	    } else {
-
-		//Abre uma mensagem de erro
-		JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
-
-	    }
-
-	} catch (IOException | JSONException | HeadlessException e) {
-
-	}
+        LoginUser();
 
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+
+        //Se o usuário pressionar enter na tela de login
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            LoginUser();
+
+        }
+
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        
+        //Abre o navegador na tela de Cadastro
+        link.browse("http://healthyliving.aduv.com.br/?url=cadastro");
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        
+        //Abre o navegado na tela de Restauração de Senha
+        link.browse("http://healthyliving.aduv.com.br/?url=passreset");
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    void LoginUser() {
+
+        try {
+
+            conBanco.login(txtUser.getText(), txtPass.getText());
+
+            //Se a variável for igual a true
+            if (conBanco.login) {
+
+                arquivo.Escrever(conBanco.nome); //Recebe o nome do usuário e grava no arquivo
+                new Main().setVisible(true); //Tona a janela Main visível
+                dispose(); //Fecha a Janela atual
+
+            } else {
+
+                //Abre uma mensagem de erro
+                JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
+
+            }
+
+        } catch (IOException | JSONException | HeadlessException e) {
+
+        }
+
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
 
-	ArquivoUsuario arquivo = new ArquivoUsuario();
+        ArquivoUsuario arquivo = new ArquivoUsuario();
 
 	//Look and feel do programa
-	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-	 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-	 */
-	try {
-	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-		if ("GTK+".equals(info.getName())) {
-		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-		    break;
-		}
-	    }
-	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	}
-	//</editor-fold>
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("GTK+".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-	if (arquivo.CheckUser()) {
-	    new Main().setVisible(true);
-	} else {
-	    new TelaLogin().setVisible(true);
-	}
+        if (arquivo.CheckUser()) {
+            new Main().setVisible(true);
+        } else {
+            new TelaLogin().setVisible(true);
+        }
 
     }
 
