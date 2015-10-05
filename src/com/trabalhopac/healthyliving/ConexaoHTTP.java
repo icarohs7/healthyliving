@@ -22,7 +22,7 @@ public class ConexaoHTTP {
     public void login(String usuario, String senha) throws MalformedURLException, IOException, JSONException {
 
 	String urlParameters = "usuario=" + usuario + "&senha=" + senha;
-	URL url = new URL("http://healthyliving.pe.hu/admin/login.php");
+	URL url = new URL("http://healthyliving.aduv.com.br/admin/login.php");
 	URLConnection conn = url.openConnection();
 
 	conn.setDoOutput(true);
