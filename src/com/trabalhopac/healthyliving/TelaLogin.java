@@ -191,14 +191,14 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         
         //Abre o navegador na tela de Cadastro
-        link.browse("http://healthyliving.aduv.com.br/?url=3");
+        link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         
         //Abre o navegador na tela de Restauração de Senha
-        link.browse("http://healthyliving.aduv.com.br/?url=5");
+        link.browse("http://healthyliving.aduv.com.br/?url=newpass");
         
     }//GEN-LAST:event_jLabel2MouseClicked
 
