@@ -1,22 +1,20 @@
 package com.trabalhopac.healthyliving;
 
-import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import javax.swing.JOptionPane;
-import org.json.JSONException;
 
 //@author Carlos, Suellen, Vitor e Ícaro
 public class TelaLogin extends javax.swing.JFrame {
 
     //Chama as Classes
-    ConexaoHTTP conBanco = new ConexaoHTTP();
+    ConexaoHTTP conexao = new ConexaoHTTP();
     ArquivoUsuario arquivo = new ArquivoUsuario();
     Hyperlink link = new Hyperlink();
 
     //Creates new form TelaLogin
     public TelaLogin() {
-        initComponents();
+	initComponents();
+	dicaDoDia();
     }
 
     @SuppressWarnings("unchecked")
@@ -34,7 +32,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblDicaDoDia = new javax.swing.JLabel();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDica = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Healthy Living");
@@ -116,7 +114,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -125,10 +123,9 @@ public class TelaLogin extends javax.swing.JFrame {
         lblDicaDoDia.setForeground(new java.awt.Color(255, 0, 0));
         lblDicaDoDia.setText("Dica do Dia");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("O jutson até hoje ainda não postou os\nslides no portal.\n");
+        txtDica.setEditable(false);
+        txtDica.setTabSize(4);
+        txtDica.setText("Carregando...");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,8 +134,8 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDicaDoDia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblDicaDoDia, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                    .addComponent(txtDica))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -147,8 +144,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblDicaDoDia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
+                .addComponent(txtDica, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jSplitPane1.setRightComponent(jPanel2);
@@ -167,7 +164,7 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,56 +172,57 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        LoginUser();
+	loginUser();
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
 
-        //Se o usuário pressionar enter na tela de login
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            LoginUser();
-        }
+	//Se o usuário pressionar enter na tela de login
+	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+	    loginUser();
+	}
 
     }//GEN-LAST:event_txtPassKeyPressed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        
-        //Abre o navegador na tela de Cadastro
-        link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
-        
+
+	//Abre o navegador na tela de Cadastro
+	link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
+
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        
-        //Abre o navegador na tela de Restauração de Senha
-        link.browse("http://healthyliving.aduv.com.br/?url=newpass");
-        
+
+	//Abre o navegador na tela de Restauração de Senha
+	link.browse("http://healthyliving.aduv.com.br/?url=newpass");
+
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    void LoginUser() {
+    void loginUser() {
 
-        try {
+	conexao.login(txtUser.getText(), txtPass.getText());
 
-            conBanco.login(txtUser.getText(), txtPass.getText());
+	//Se a variável for igual a true
+	if (conexao.login) {
 
-            //Se a variável for igual a true
-            if (conBanco.login) {
+	    arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
+	    new Main().setVisible(true); //Tona a janela Main visível
+	    dispose(); //Fecha a Janela atual
 
-                arquivo.Escrever(conBanco.nome); //Recebe o nome do usuário e grava no arquivo
-                new Main().setVisible(true); //Tona a janela Main visível
-                dispose(); //Fecha a Janela atual
+	} else {
 
-            } else {
+	    //Abre uma mensagem de erro
+	    JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
 
-                //Abre uma mensagem de erro
-                JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
+	}
 
-            }
+    }
 
-        } catch (IOException | JSONException | HeadlessException e) {
+    private void dicaDoDia() {
 
-        }
+	//Faz a conexão ao servidor, e recebe a dica do dia
+	txtDica.setText(conexao.dicaDoDia());
 
     }
 
@@ -233,27 +231,27 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        ArquivoUsuario arquivo = new ArquivoUsuario();
+	ArquivoUsuario arquivo = new ArquivoUsuario();
 
 	//Look and feel do programa
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("GTK+".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+	try {
+	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+		if ("GTK+".equals(info.getName())) {
+		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+		    break;
+		}
+	    }
+	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	}
+	//</editor-fold>
 
-        if (arquivo.CheckUser()) {
-            new Main().setVisible(true);
-        } else {
-            new TelaLogin().setVisible(true);
-        }
+	if (arquivo.CheckUser()) {
+	    new Main().setVisible(true);
+	} else {
+	    new TelaLogin().setVisible(true);
+	}
 
     }
 
@@ -264,10 +262,10 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblDicaDoDia;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
+    private javax.swing.JTextArea txtDica;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
