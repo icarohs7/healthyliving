@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.trabalhopac.healthyliving;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author carlos
- */
+//@author carlos
 public class ArquivoUsuario {
 
     File arquivo = new File(System.getProperty("user.dir") + "/userdata.dat");
@@ -28,15 +21,12 @@ public class ArquivoUsuario {
 		arquivo.createNewFile();
 	    }
 
-	    FileWriter fw = new FileWriter(arquivo);
-	    //BufferedWriter bw = new BufferedWriter(fw);
-
-	    fw.write(texto);
-
-	    //bw.close();
-	    fw.close();
+	    try (FileWriter fw = new FileWriter(arquivo)) {
+		fw.write(texto);
+	    }
 
 	} catch (IOException e) {
+	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
 	}
 
     }
@@ -47,15 +37,12 @@ public class ArquivoUsuario {
 
 	try {
 
-	    FileReader fr = new FileReader(arquivo);
-	    BufferedReader br = new BufferedReader(fr);
-
-	    texto = br.readLine();
-
-	    br.close();
-	    fr.close();
+	    try (FileReader fr = new FileReader(arquivo); BufferedReader br = new BufferedReader(fr)) {
+		texto = br.readLine();
+	    }
 
 	} catch (Exception e) {
+	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
 	}
 
 	return texto;
@@ -69,20 +56,19 @@ public class ArquivoUsuario {
 
 	try {
 
-	    FileReader fr = new FileReader(arquivo);
-	    BufferedReader br = new BufferedReader(fr);
+	    try (FileReader fr = new FileReader(arquivo); BufferedReader br = new BufferedReader(fr)) {
 
-	    texto = br.readLine();
+		texto = br.readLine();
 
-	    //Verifica se o texto do arquivo não é igual a null
-	    if (!texto.equals("null")) {
-		result = true;
+		//Verifica se o texto do arquivo não é igual a null
+		if (!texto.equals("null")) {
+		    result = true;
+		}
+
 	    }
 
-	    br.close();
-	    fr.close();
-
 	} catch (Exception e) {
+	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
 	}
 
 	return result;
@@ -97,15 +83,12 @@ public class ArquivoUsuario {
 		arquivo.createNewFile();
 	    }
 
-	    FileWriter fw = new FileWriter(arquivo);
-	    //BufferedWriter bw = new BufferedWriter(fw);
-
-	    fw.write("null");
-
-	    //bw.close();
-	    fw.close();
+	    try (FileWriter fw = new FileWriter(arquivo)) {
+		fw.write("null");
+	    }
 
 	} catch (IOException e) {
+	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
 	}
 
     }
