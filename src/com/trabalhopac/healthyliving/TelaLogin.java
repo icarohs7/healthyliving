@@ -13,8 +13,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
     //Creates new form TelaLogin
     public TelaLogin() {
-	initComponents();
-	dicaDoDia();
+        initComponents();
+        dicaDoDia();
     }
 
     @SuppressWarnings("unchecked")
@@ -172,57 +172,71 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-	loginUser();
+        loginUser();
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
 
-	//Se o usuário pressionar enter na tela de login
-	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-	    loginUser();
-	}
+        //Se o usuário pressionar enter na tela de login
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            loginUser();
+        }
 
     }//GEN-LAST:event_txtPassKeyPressed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
-	//Abre o navegador na tela de Cadastro
-	link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
+        //Abre o navegador na tela de Cadastro
+        link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
 
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-	//Abre o navegador na tela de Restauração de Senha
-	link.browse("http://healthyliving.aduv.com.br/?url=newpass");
+        //Abre o navegador na tela de Restauração de Senha
+        link.browse("http://healthyliving.aduv.com.br/?url=newpass");
 
     }//GEN-LAST:event_jLabel2MouseClicked
 
     void loginUser() {
 
-	conexao.login(txtUser.getText(), txtPass.getText());
+        conexao.login(txtUser.getText(), txtPass.getText());
 
-	//Se a variável for igual a true
-	if (conexao.login) {
+        //Se a variável for igual a true
+        if (conexao.login) {
 
-	    arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
-	    new Main().setVisible(true); //Tona a janela Main visível
-	    dispose(); //Fecha a Janela atual
+            arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
+            new Main().setVisible(true); //Tona a janela Main visível
+            dispose(); //Fecha a Janela atual
 
-	} else {
+        } else {
 
-	    //Abre uma mensagem de erro
-	    JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
+            //Abre uma mensagem de erro
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
 
-	}
+        }
 
     }
 
     private void dicaDoDia() {
 
-	//Faz a conexão ao servidor, e recebe a dica do dia
-	txtDica.setText(conexao.dicaDoDia());
+        /**
+         * Cria uma tarefa paralela ao programa
+         * Para que não seja necessário ele esperar a execução desse bloco
+         * Para depois continuar
+         */
+        new Thread() {
+
+            @Override
+            public void run() {
+
+                //Faz a conexão ao servidor, e recebe a dica do dia
+                txtDica.setText(conexao.dicaDoDia());
+
+            }
+
+        }.start();
 
     }
 
@@ -231,27 +245,27 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-	ArquivoUsuario arquivo = new ArquivoUsuario();
+        ArquivoUsuario arquivo = new ArquivoUsuario();
 
-	//Look and feel do programa
-	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-	try {
-	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-		if ("GTK+".equals(info.getName())) {
-		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-		    break;
-		}
-	    }
-	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-	    java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	}
-	//</editor-fold>
+        //Look and feel do programa
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("GTK+".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-	if (arquivo.CheckUser()) {
-	    new Main().setVisible(true);
-	} else {
-	    new TelaLogin().setVisible(true);
-	}
+        if (arquivo.CheckUser()) {
+            new Main().setVisible(true);
+        } else {
+            new TelaLogin().setVisible(true);
+        }
 
     }
 
