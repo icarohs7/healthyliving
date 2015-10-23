@@ -4,25 +4,24 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author carlos
- */
+//@author carlos
 public class Hyperlink {
 
     public void browse(String url) {
 
-        Desktop desktop = Desktop.getDesktop();
+	Desktop desktop = Desktop.getDesktop();
 
-        try {
+	try {
 
-            URI uri = new URI(url);
-            desktop.browse(uri);
+	    URI uri = new URI(url);
+	    desktop.browse(uri);
 
-        } catch (IOException | URISyntaxException e) {
-            
-        }
+	} catch (IOException | URISyntaxException ex) {
+	    Logger.getLogger(Hyperlink.class.getName()).log(Level.INFO, null, ex);
+	}
 
     }
 

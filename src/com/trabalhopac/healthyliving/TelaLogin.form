@@ -37,7 +37,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSplitPane1" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,7 +89,7 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -178,8 +178,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextArea1" min="-2" pref="345" max="-2" attributes="0"/>
-                          <Component id="lblDicaDoDia" max="32767" attributes="0"/>
+                          <Component id="lblDicaDoDia" pref="345" max="32767" attributes="0"/>
+                          <Component id="txtDica" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -191,8 +191,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblDicaDoDia" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextArea1" min="-2" pref="243" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="txtDica" pref="237" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -209,12 +209,11 @@
                 <Property name="text" type="java.lang.String" value="Dica do Dia"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="txtDica">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="O jutson at&#xe9; hoje ainda n&#xe3;o postou os&#xa;slides no portal.&#xa;"/>
+                <Property name="tabSize" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="Carregando..."/>
               </Properties>
             </Component>
           </SubComponents>
