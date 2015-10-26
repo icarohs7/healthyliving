@@ -78,7 +78,7 @@ public class ConexaoHTTP {
         
         try{
             
-            alimento = resposta2.getString("alimento"); //Atribui o nome do alimento recebido
+            alimento = resposta2.getString("alimento"); //Atribui o nome do alimento
             caloria = resposta2.getInt("caloria"); //Atribui o valor de caloria do alimento
         }
         
