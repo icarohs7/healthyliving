@@ -14,8 +14,9 @@ import org.json.JSONObject;
 //@author carlos
 public class ConexaoHTTP {
 
-    public String nome;
+    public String nome, alimento;
     public boolean login;
+    public int caloria;
 
     public JSONObject http(String site, String parametros) {
 
@@ -67,6 +68,23 @@ public class ConexaoHTTP {
 	    Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
 	}
 
+    }
+    public void alimentos(String alimento, int caloria) {
+        
+        String parametros = "alimento=" + alimento + "&caloria=" + caloria;
+        String url = "http://healthyliving.aduv.com.br/admin/controle_calorias.php";
+        
+        JSONObject resposta2 = http(url, parametros);
+        
+        try{
+            
+            alimento = resposta2.getString("alimento"); //Atribui o nome do alimento
+            caloria = resposta2.getInt("caloria"); //Atribui o valor de caloria do alimento
+        }
+        
+        catch (JSONException ex) {
+            Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
