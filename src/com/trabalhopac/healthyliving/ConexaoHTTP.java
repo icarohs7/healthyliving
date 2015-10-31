@@ -14,77 +14,77 @@ import org.json.JSONObject;
 //@author carlos
 public class ConexaoHTTP {
 
-    public String nome, alimento;
+    public String nome;
     public boolean login;
-    public int caloria;
+    public int totalDeCalorias;
 
     public JSONObject http(String site, String parametros) {
 
-	JSONObject resposta = null;
+        JSONObject resposta = null;
 
-	try {
+        try {
 
-	    BufferedReader reader;
+            BufferedReader reader;
 
-	    URL url = new URL(site);
+            URL url = new URL(site);
 
-	    URLConnection conn = url.openConnection();
-	    conn.setDoOutput(true);
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
 
-	    try (OutputStreamWriter escrever = new OutputStreamWriter(conn.getOutputStream())) {
+            try (OutputStreamWriter escrever = new OutputStreamWriter(conn.getOutputStream())) {
 
-		escrever.write(parametros);
-		escrever.flush();
-		reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                escrever.write(parametros);
+                escrever.flush();
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-		//Recebe a resposta do servidor e guarda num JSONObject
-		resposta = new JSONObject(reader.readLine());
+                //Recebe a resposta do servidor e guarda num JSONObject
+                resposta = new JSONObject(reader.readLine());
+                
+            }
 
-	    }
+            reader.close();
 
-	    reader.close();
+        } catch (IOException | JSONException ex) {
+            Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-	} catch (IOException | JSONException ex) {
-	    Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
-	}
-
-	return resposta;
+        return resposta;
 
     }
 
     public void login(String usuario, String senha) {
 
-	String parametros = "usuario=" + usuario + "&senha=" + senha;
-	String url = "http://healthyliving.aduv.com.br/admin/login.php";
+        String parametros = "usuario=" + usuario + "&senha=" + senha;
+        String url = "http://healthyliving.aduv.com.br/admin/login.php";
 
-	JSONObject resposta = http(url, parametros);
+        JSONObject resposta = http(url, parametros);
 
-	try {
+        try {
 
-	    nome = resposta.getString("Nome"); //Atribui o nome do usuário recebido
-	    login = resposta.getBoolean("Login"); //Retorna true se o usuário e senha forem válidos
+            this.nome = resposta.getString("Nome"); //Atribui o nome do usuário recebido
+            this.login = resposta.getBoolean("Login"); //Retorna true se o usuário e senha forem válidos
 
-	} catch (JSONException ex) {
-	    Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
-	}
-
-    }
-    public void alimentos(String alimento, int caloria) {
-        
-        String parametros = "alimento=" + alimento + "&caloria=" + caloria;
-        String url = "http://healthyliving.aduv.com.br/admin/controle_calorias.php";
-        
-        JSONObject resposta2 = http(url, parametros);
-        
-        try{
-            
-            alimento = resposta2.getString("alimento"); //Atribui o nome do alimento
-            caloria = resposta2.getInt("caloria"); //Atribui o valor de caloria do alimento
-        }
-        
-        catch (JSONException ex) {
+        } catch (JSONException ex) {
             Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+
+    public void alimentos(String alimento, int caloria) {
+
+        String parametros = "alimento=" + alimento + "&caloria=" + caloria + "&json=true";
+        String url = "http://healthyliving.aduv.com.br/admin/alimentos/controle_calorias.php";
+
+        JSONObject resposta = http(url, parametros);
+
+        try {
+
+            this.totalDeCalorias = resposta.getInt("Calorias"); //Atribui o valor de caloria do alimento
+
+        } catch (JSONException ex) {
+            Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -95,20 +95,20 @@ public class ConexaoHTTP {
     public String dicaDoDia() {
 
 //	String parametros = "variavel=valor";
-	String url = "http://healthyliving.aduv.com.br/connect/dica.php";
-	String dica = null;
+        String url = "http://healthyliving.aduv.com.br/connect/dica.php";
+        String dica = null;
 
-	JSONObject resposta;
-	try {
+        JSONObject resposta;
+        try {
 
-	    resposta = http(url, "");
-	    dica = resposta.getString("Dica");
+            resposta = http(url, "");
+            dica = resposta.getString("Dica");
 
-	} catch (JSONException ex) {
-	    Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
-	}
+        } catch (JSONException ex) {
+            Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-	return dica;
+        return dica;
 
     }
 
