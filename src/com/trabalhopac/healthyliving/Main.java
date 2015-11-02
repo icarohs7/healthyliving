@@ -184,7 +184,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        new controledecalorias().setVisible(true); //Torna a janela controledecalorias visível
+        new ControleDeCalorias().setVisible(true); //Torna a janela ControleDeCalorias visível
     }//GEN-LAST:event_jButton2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
