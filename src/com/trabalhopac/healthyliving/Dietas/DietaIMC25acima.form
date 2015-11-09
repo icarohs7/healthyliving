@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="853" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="btnSair" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="btnVoltar" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Component id="jScrollPane1" alignment="1" pref="924" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="464" max="32767" attributes="0"/>
+              <Component id="btnVoltar" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSair" min="-2" pref="30" max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="461" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnVoltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSair">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sair"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtDietaGordo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Existem v&#xe1;rias raz&#xf5;es pelas quais as pessoas querem perder gordura corporal, e existem v&#xe1;rias maneiras propostas por a&#xed; para se atingir esse objetivo.&#xa;Os m&#xe9;todos mais usados e N&#xc3;O SAUD&#xc1;VEIS s&#xe3;o as dietas radicais e as dietas da moda.&#xa;&#xa;&#xa;DIETAS RADICAIS&#xa;&#xa;As dietas radicais prop&#xf5;em uma redu&#xe7;&#xe3;o dr&#xe1;stica nas calorias, no geral abaixo de 900, 800 as vezes 600 calorias/dia.&#xa;Elas trazem muitas consequ&#xea;ncias:&#xa;1 . Perda de massa muscular e de l&#xed;quidos junto com a perda da gordura.&#xa;Se a pessoa emagrecer 9 Kg em 20 dias, os primeiros 2,5 a 4,5 Kg ser&#xe3;o de l&#xed;quidos e o restante divididos entre gordura e m&#xfa;sculo.&#xa;N&#xe3;o h&#xe1; lucro nenhum em perder muito peso em um espa&#xe7;o t&#xe3;o curto de tempo, pois emagrecer n&#xe3;o &#xe9; perder peso.&#xa;Emagrecer &#xe9; perder gordura.&#xa;2. Perda de for&#xe7;a e capacidade aer&#xf3;bica: em consequ&#xea;ncia haver&#xe1; menos oxig&#xea;nio dispon&#xed;vel para as c&#xe9;lulas musculares usarem a gordura como combust&#xed;vel.&#xa;3. Perda de for&#xe7;a: p&#xe9;ssimo para quem pratica muscula&#xe7;&#xe3;o e precisa realizar exerc&#xed;cios intensos sem falhar.&#xa;4. Desacelera&#xe7;&#xe3;o do metabolismo: dietas radicais desaceleram a taxa metab&#xf3;lica, que &#xe9; a velocidade com que o organismo converte os alimentos em energia e os usa para fabricar estruturas corporais.&#xa;Uma mulher gasta em m&#xe9;dia entre 1200 a 1400 calorias por dia apenas para garantir o trabalho de sobreviv&#xea;ncia das c&#xe9;lulas.&#xa;Imagine o mal causado aos processos normais da vida quando o corpo &#xe9; obrigado a sobreviver com uma dieta de 600 calorias/dia.&#xa;Dietas radicais s&#xe3;o totalmente in&#xfa;teis, pois praticamente todas as pessoas que seguem tais tipos de dieta costumam readquirir o peso que perderam, com juros, no per&#xed;odo de um ano.&#xa;&#xa;&#xa;DIETAS DA MODA&#xa;&#xa;J&#xe1; as dietas da moda s&#xe3;o t&#xe3;o ruins quanto as radicais.&#xa;O maior problema &#xe9; que elas s&#xe3;o desequilibradas do ponto de vista nutricional (privilegiam determinado tipo de alimento em preju&#xed;zo de outro).&#xa;Esse desequil&#xed;brio pode cortar alguns nutrientes essenciais &#xe0; sa&#xfa;de, al&#xe9;m de outros problemas como desidrata&#xe7;&#xe3;o e flacidez.&#xa;&#xa;&#xa;ENT&#xc3;O O QUE REALMENTE FUNCIONA PARA A PERDA DE GORDURA ??&#xa;&#xa;Exerc&#xed;cios f&#xed;sicos espec&#xed;ficos para a queima de gordura aliados a uma alimenta&#xe7;&#xe3;o individualizada, com equil&#xed;brio nutricional, apoiado em uma combina&#xe7;&#xe3;o adequada de prote&#xed;nas, carboidratos e gordura.&#xa;Esse &#xe9; o caminho.&#xa;O primeiro passo &#xe9; conhecer a situa&#xe7;&#xe3;o real, estabelecer uma meta e definir quanto de gordura precisa ser eliminada.&#xa;Esque&#xe7;a as balan&#xe7;as dom&#xe9;sticas, pois essa avalia&#xe7;&#xe3;o tem de ser feita de maneira qualitativa, e isso somente um teste de composi&#xe7;&#xe3;o corporal pode te dar.&#xa;&#xc9; necess&#xe1;rio saber o peso e que tipo de tecido o constitui (se gordura, massa muscular ou reten&#xe7;&#xe3;o de l&#xed;quido) antes de se planejar.&#xa;Qual seria o ideal em termos de gordura corporal?&#xa;A faixa considerada saud&#xe1;vel para mulheres fica entre 20 e 25% e para os homens entre 15 e 20%.&#xa;Contudo, para um praticante de muscula&#xe7;&#xe3;o, seriam desej&#xe1;veis percentuais mais baixos: 12 a 18% para as mulheres e 6 a 15% para os homens.&#xa;E qual a melhor maneira de perder o m&#xe1;ximo de gordura e o m&#xed;nimo de massa muscular?&#xa;Se voc&#xea; respondeu dieta de baixa caloria, errou.&#xa;As dietas aqui s&#xe3;o coadjuvantes. A estrela do processo &#xe9; o EXERC&#xcd;CIO F&#xcd;SICO.&#xa;Por que? Porque o exerc&#xed;cio f&#xed;sico al&#xe9;m de queimar calorias estimulando mecanismos que aumentam a queima de gordura (ao contr&#xe1;rio das dietas muito restritivas), eleva a taxa metab&#xf3;lica e ainda conserva o tecido muscular.&#xa;Claro que &#xe9; poss&#xed;vel emagrecer com dietas restritivas, entretanto emagrecer com exerc&#xed;cios e dieta N&#xc3;O RESTRITIVA conserva a massa muscular e mant&#xe9;m o metabolismo funcionando, favorecendo a ESTABILIZA&#xc7;&#xc3;O do peso atingido.&#xa;&#xa;&#xa;INTENSIDADE, FREQU&#xca;NCIA E TEMPO DE ATIVIDADE&#xa;&#xa;A intensidade do exerc&#xed;cio &#xe9; fator determinante na queima da gordura.&#xa;No exerc&#xed;cio aer&#xf3;bico se mede a intensidade pela frequ&#xea;ncia card&#xed;aca.&#xa;Para se obter a m&#xe1;xima queima de gordura o exerc&#xed;cio deve ser intenso o suficiente para elevar a frequ&#xea;ncia card&#xed;aca at&#xe9; 70 a 85% da frequ&#xea;ncia card&#xed;aca m&#xe1;xima poss&#xed;vel para aquela pessoa.&#xa;Se a pessoa tiver dificuldade de treinar com alta intensidade, pode queimar a mesma quantidade de gordura com exerc&#xed;cios de intensidade menor, aumentando por mais tempo a sua pr&#xe1;tica.&#xa;Outra op&#xe7;&#xe3;o relacionada aqui &#xe9; a frequ&#xea;ncia: quanto mais vezes por semana, maior o gasto cal&#xf3;rico que vai ser obtido ao final daquela semana, daquele m&#xea;s.&#xa;J&#xe1; na muscula&#xe7;&#xe3;o intensidade se refere ao peso que se levanta. (O Dr. Luciano de Castro fez uma ressalva, alegando que h&#xe1; outras formas de intensificar o exerc&#xed;cio al&#xe9;m de aumentar a carga)&#xa;Para haver aumento de for&#xe7;a e volume muscular, eles t&#xea;m de ser submetidos a novos desafios (pesos mais pesados), progressivamente a cada sess&#xe3;o de treinos.&#xa;Quanto mais se desenvolvem os m&#xfa;sculos, mais eficiente se torna o organismo na queima da gordura, pois os m&#xfa;sculos s&#xe3;o metabolicamente muito ativos, e consomem grande quantidade de energia, na atividade e no repouso.&#xa;A efici&#xea;ncia com o qual o organismo queima a gordura depende do grau de condicionamento do indiv&#xed;duo.&#xa;&#xa;&#xa;QUEIMAR GORDURA&#xa;&#xa;O problema &#xe9; que o corpo s&#xf3; queima gordura em presen&#xe7;a de oxig&#xea;nio dispon&#xed;vel.&#xa;O oxig&#xea;nio tem de estar presente para que o corpo obtenha energia da gordura e n&#xe3;o do glicog&#xea;nio.&#xa;E nos est&#xe1;gios iniciais do exerc&#xed;cio f&#xed;sico, o oxig&#xea;nio ainda n&#xe3;o est&#xe1; dispon&#xed;vel.&#xa;Pode levar de 20 a 40 minutos para que a gordura esteja totalmente dispon&#xed;vel como combust&#xed;vel, e nesse meio tempo a glicose do sangue e o glicog&#xea;nio do m&#xfa;sculo s&#xe3;o usados como combust&#xed;vel.&#xa;Depois de 1 hora de exerc&#xed;cio intenso o estoque de glicog&#xea;nio (energia pronta para o uso) pode diminuir a valores pr&#xf3;ximos de zero.&#xa;A pr&#xe1;tica da muscula&#xe7;&#xe3;o n&#xe3;o s&#xf3; desenvolve os m&#xfa;sculos como tamb&#xe9;m acelera a queima da gordura. Por isso a combina&#xe7;&#xe3;o perfeita para entrar em forma &#xe9; MUSCULA&#xc7;&#xc3;O + AER&#xd3;BICOS. &#xa;Se as dietas muito restritivas s&#xe3;o ruins, ent&#xe3;o o que fazer com a comida para potencializar essa perda agora que voc&#xea; entendeu que o melhor meio para se livrar da gordura &#xe9; o exerc&#xed;cio f&#xed;sico?&#xa;&#xa;&#xa;DICAS GERAIS&#xa;&#xa;1. N&#xe3;o passar fome: a capacidade do organismo de reduzir a taxa metab&#xf3;lica diante de circunst&#xe2;ncias extremas de fome &#xe9; bem conhecida dos cientistas e se chama ADAPTA&#xc7;&#xc3;O A FOME, pois permite que o indiv&#xed;duo sobreviva bem mais tempo com t&#xe3;o pouca comida.&#xa;N&#xe3;o h&#xe1; vantagem nenhuma em ingerir muito menos calorias do que o organismo necessita.&#xa;2. Corrigir a gordura da dieta: N&#xe3;o d&#xe1; para queimar gordura ingerindo preferencialmente gorduras ruins.&#xa;E a ingest&#xe3;o controlada das chamadas boas gorduras &#xe9; necess&#xe1;ria para potencializar o processo.&#xa;3. Preservar os m&#xfa;sculos com prote&#xed;na: as prote&#xed;nas ajudam a dar saciedade, e em uma dieta com menos calorias elas certamente n&#xe3;o servir&#xe3;o para forma&#xe7;&#xe3;o de tecido muscular, mas o fornecimento das prote&#xed;nas corretas, nos momentos corretos, vai ajudar a preserva&#xe7;&#xe3;o da massa muscular.&#xa;O perfil alimentar ideal para perda de gordura consiste em 30% de prote&#xed;nas, 40% de carboidratos e 30% de gorduras.&#xa;4. Atentar para os carboidratos corretos: complexos, ricos em fibras, de baixa carga glic&#xea;mica.&#xa;5. Controlar o a&#xe7;&#xfa;car extra da dieta: o a&#xe7;&#xfa;car promove resist&#xea;ncia das c&#xe9;lulas a insulina, e com isso esse a&#xe7;&#xfa;car circulante vai ser convertido pelo f&#xed;gado em gordura.&#xa;Para se livrar de gordura &#xe9; necess&#xe1;rio cortar alimentos ricos em gordura e a&#xe7;&#xfa;car.&#xa;Existe um v&#xed;nculo ineg&#xe1;vel entre alimenta&#xe7;&#xe3;o rica em a&#xe7;&#xfa;car / gordura e obesidade.&#xa;6. N&#xe3;o pular o caf&#xe9; da manh&#xe3;: Pular o caf&#xe9; da manh&#xe3;, como dito NESSA MAT&#xc9;RIA, traz uma s&#xe9;rie de desvantagens a quem quer atingir um peso mais saud&#xe1;vel, com menos gordura e mais massa muscular.&#xa;Ent&#xe3;o repetindo: Qual a melhor maneira de perder o m&#xe1;ximo de gordura e o m&#xed;nimo de massa muscular? EXERC&#xcd;CIO F&#xcd;SICO!&#xa;"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtDietaGordo.setCaretPosition(0);"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

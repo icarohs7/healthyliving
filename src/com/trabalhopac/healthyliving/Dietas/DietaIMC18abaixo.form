@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="853" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="btnSair" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="btnVoltar" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Component id="jScrollPane1" alignment="1" pref="924" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="464" max="32767" attributes="0"/>
+              <Component id="btnVoltar" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSair" min="-2" pref="30" max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="461" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnVoltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSair">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sair"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtDietaMagro">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="&#x9;Enquanto muitas pessoas t&#xea;m problemas para emagrecer, outras precisam justamente ganhar peso. A mesma matem&#xe1;tica para o emagrecimento vale tamb&#xe9;m para o ganho de peso, ou seja, se consome menos calorias do que gasta vai emagrecer, e se ingere mais calorias do que gasta ganhar&#xe1; peso.&#xa;&#xa;&#x9;Desta forma, uma estrat&#xe9;gia para ganhar peso &#xe9; consumir uma dieta com muitas calorias, ou seja hipercal&#xf3;rica. Por&#xe9;m, &#xe9; importante n&#xe3;o sair por a&#xed; comendo produtos ricos em calorias mas com pouco valor nutritivo, como os sandu&#xed;ches de lanchonetes fast-food por exemplo. O indicado &#xe9; consumir uma dieta que, ao mesmo tempo em que seja hipercal&#xf3;rica, tamb&#xe9;m forne&#xe7;a os nutrientes apropriados, vitaminas e sais minerais.&#xa;&#xa;&#x9;Outro ponto a ser levado em considera&#xe7;&#xe3;o ao adotar uma dieta hipercal&#xf3;rica para ganhar peso &#xe9; verificar que ela seja equilibrada, contendo as quantidades apropriadas de todos os grupos de alimentos: prote&#xed;nas, gorduras e carboidratos. &#xa;Os alimentos ricos em carboidratos, como massas e p&#xe3;es, fornecem muitas calorias para o ganho de peso. A gorduras s&#xe3;o ricas em calorias, por&#xe9;m podem elevar seu colesterol ruim (LDL). Procure consumir as &quot;gorduras do boas&quot; mono-insaturada, &#xf4;mega-6 e &#xf4;mega-3, contidas em azeite de oliva, nozes e peixes, pois estas elevam o bom colesterol (HDL) e s&#xe3;o ben&#xe9;ficas &#xe0; sa&#xfa;de, ao mesmo temo que evita as &quot;gorduras do mal&quot; trans-saturada e saturada, presentes em alimentos como frituras, manteiga e margarina. O consumo de prote&#xed;nas tamb&#xe9;m &#xe9; importante, por&#xe9;m &#xe9; preciso certificar-se que n&#xe3;o est&#xe1; havendo uma ingest&#xe3;o excessiva que possa sobrecarregar os rins e fun&#xe7;&#xf5;es hep&#xe1;ticas.&#xa;&#xa;&#x9;Para que seu organismo absorva melhor os alimentos consumidos, procure mastiga-los bem, j&#xe1; que isso favorecer&#xe1; a digest&#xe3;o. Uma estrat&#xe9;gia para aumentar sua capacidade de ingest&#xe3;o de alimentos &#xe9; elevar gradativamente a quantidade das refei&#xe7;&#xf5;es para que a capacidade do est&#xf4;mago seja aumentada. A muscula&#xe7;&#xe3;o, aliada &#xe0; uma dieta hipercal&#xf3;rica, tamb&#xe9;m pode ajudar a ganhar peso.&#xa;"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtDietaMagro.setCaretPosition(0);"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" alignment="1" min="-2" pref="924" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Component id="btnSair" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="btnVoltar" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="jScrollPane1" min="-2" pref="461" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnVoltar" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSair" min="-2" pref="30" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnVoltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSair">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sair"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtDietaSaudavel">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="&#xa;&#xa;1.N&#xe3;o fique sem comer&#xa;&quot;O mais importante &#xe9; n&#xe3;o passar longos per&#xed;odos sem comer. Fazer pequenos lanches entre as grandes refei&#xe7;&#xf5;es &#xe9; fundamental, pois ao restringir energia o metabolismo tende a ficar mais lento, como uma forma de poupar energia que lhe foi fornecida, o que acaba dificultando a perda de peso. Al&#xe9;m disso, provavelmente a pessoa ir&#xe1; comer mais na pr&#xf3;xima refei&#xe7;&#xe3;o, buscando alimentos mais cal&#xf3;ricos, como uma forma de compensa&#xe7;&#xe3;o, o que tamb&#xe9;m resultar&#xe1; em ganho de peso.&quot; (Carla Fiorillo, nutricionista da Universidade Federal de S&#xe3;o Paulo)&#xa;&#xa;&#xa;2.Sinta prazer comendo&#xa;&quot;A alimenta&#xe7;&#xe3;o tamb&#xe9;m &#xe9; fonte de prazer. N&#xe3;o se torne escravo de dietas e calorias, pois existem cada vez mais estudos que evidenciam que pessoas que se preocupam demais com a forma f&#xed;sica tendem a sofrer maiores oscila&#xe7;&#xf5;es de peso, al&#xe9;m de serem insatisfeitas com o pr&#xf3;prio corpo. Estar bem consigo mesmo e cuidar do corpo com atividade f&#xed;sica e alimenta&#xe7;&#xe3;o saud&#xe1;vel s&#xe3;o as melhores formas de obter uma boa qualidade de vida.&quot; (Carla Fiorillo, nutricionista da Universidade Federal de S&#xe3;o Paulo)&#xa;&#xa;&#xa;3.Busque alimentos naturais&#xa;&quot;Siga uma alimenta&#xe7;&#xe3;o o mais natural poss&#xed;vel e tente fugir de refei&#xe7;&#xf5;es com muitos produtos industrializados. Se comer um macarr&#xe3;o industrializado, fa&#xe7;a voc&#xea; mesmo um molho caseiro. Se quiser tomar um suco de frutas, tente tomar o natural, pois os alimentos industrializados cont&#xea;m muitas subst&#xe2;ncias como corantes e conservantes, que possuem altas quantidades de s&#xf3;dio e podem, em longo prazo, causar hipertens&#xe3;o e sobrecarregar os rins.&quot; (Daniela Cyrulin, nutricionista da USP e da Instituto Sa&#xfa;de Plena)&#xa;&#xa;&#xa;4. Fa&#xe7;a substitui&#xe7;&#xf5;es&#xa; &quot;Tente substituir alimentos mais pesados e gordurosos por vers&#xf5;es mais leves sempre que poss&#xed;vel: fa&#xe7;a macarr&#xe3;o de palmito pupunha desfiado, arroz de couve-flor cozida, troque o presunto por peito de peru, compre o atum em &#xe1;gua no lugar do atum em &#xf3;leo, troque os queijos gordurosos por vers&#xf5;es mais leves como o queijo cottage e a ricota, substitua o queijo parmes&#xe3;o ralado por ricota defumada e ralada.&quot; (Daniela Cyrulin, nutricionista da USP e da Instituto Sa&#xfa;de Plena)&#xa;    &quot;O mais importante &#xe9; perceber que nenhum alimento &#xe9; proibido.O famoso &quot;prato colorido&quot; &#xe9; sem d&#xfa;vida o mais saud&#xe1;vel&quot;&#xa;&#xa;&#xa;5. Escolha o lugar certo para comer&#xa;&quot;As refei&#xe7;&#xf5;es devem ser feitas em lugares tranquilos e sem pressa. Comer bem devagar, sem pensar em compromissos e mastigar muito bem os alimentos far&#xe1; com que voc&#xea; se sinta saciado mesmo ingerindo uma menor quantidade de comida. Tamb&#xe9;m evite comer assistindo televis&#xe3;o, na frente do computador ou trabalhando, pois nessas situa&#xe7;&#xf5;es perdemos a no&#xe7;&#xe3;o da quantidade de comida que estamos ingerindo.&quot; (Lidiane Martins, nutricionista diretora do NutryUp)&#xa;&#xa;&#xa;6.Fuja da farinha&#xa;&quot;Uma pessoa que est&#xe1; buscando uma alimenta&#xe7;&#xe3;o mais saud&#xe1;vel deve evitar produtos com farinha refinada, como massas, bolos, biscoitos e alimentos processados, ricos em gordura e a&#xe7;&#xfa;car, como pipoca de microondas, sopas prontas cremosas, prepara&#xe7;&#xf5;es congeladas, batatas chips e salgadinhos. Tamb&#xe9;m vale caprichar em ervas arom&#xe1;ticas para temperar a comida como: alho, cebola, salsa, cebolinha, manjeric&#xe3;o, alecrim, louro, or&#xe9;gano, s&#xe1;lvia, curry, a&#xe7;afr&#xe3;o e coentro&quot; (Lidiane Martins, nutricionista diretora do NutryUp)&#xa;&#xa;&#xa;7. Coma de tudo&#xa;&quot;O mais importante &#xe9; perceber que nenhum alimento &#xe9; proibido, a n&#xe3;o ser que a pessoa precise fazer uma dieta restritiva, caso seja paciente de diabetes ou doen&#xe7;a cel&#xed;aca, por exemplo. &#xc9; muito comum que as pessoas pensem que comer s&#xf3; salada &#xe9; uma boa forma de manter a alimenta&#xe7;&#xe3;o saud&#xe1;vel, mas isso n&#xe3;o &#xe9; verdade. O famoso &quot;prato colorido&quot;, ou seja, aquele que tem uma fonte de fibras, minerais, vitaminas e prote&#xed;nas &#xe9; sem d&#xfa;vida o prato mais saud&#xe1;vel&quot;. (Roberta De Lucena Ferretti, nutricionista e professora do curso de nutri&#xe7;&#xe3;o cl&#xed;nica na Universidade Gama Filho)&#xa;&#xa;&#xa;8. Estabele&#xe7;a metas para a semana&#xa;&quot;Al&#xe9;m disso, pensar em longo prazo e criar um h&#xe1;bito saud&#xe1;vel &#xe9; muito importante. Dificilmente a pessoa consegue ingerir todos os alimentos que s&#xe3;o fontes de vitaminas que o corpo precisa em um dia. Para isso, ela teria que comer v&#xe1;rios tipos de frutas, carnes, legumes e verduras todos os dias. O melhor &#xe9; fazer as metas para toda a semana. Fica mais f&#xe1;cil distribuir a alimenta&#xe7;&#xe3;o adequada nesse per&#xed;odo&quot; (Roberta De Lucena Ferretti, nutricionista e professora do curso de nutri&#xe7;&#xe3;o cl&#xed;nica na Universidade Gama Filho)&#xa;&#xa;&#xa;9. Seja persistente&#xa;&quot;Muito provavelmente, a mudan&#xe7;a para uma alimenta&#xe7;&#xe3;o adequada n&#xe3;o ocorrer&#xe1; do dia para a noite. Voc&#xea; dever&#xe1; provar alimentos que n&#xe3;o s&#xe3;o de costume como frutas, legumes, verduras. Aceite que o paladar dever&#xe1; ser estimulado. Desistir na primeira tentativa &#xe9; um erro. Todos os dias, selecione alguns desses alimentos. N&#xe3;o gostou? Prove novamente. Tudo bem se voc&#xea; rejeitar, inicialmente. Mas desistir na primeira tentativa &#xe9; subestimar o seu poder de mudan&#xe7;a.&quot; (Roberta Stella, nutricionista chefe do programa de emagrecimento Dieta e Sa&#xfa;de)&#xa;&#xa;&#xa;10. Escreva sobre suas refei&#xe7;&#xf5;es&#xa;&quot;Comece a fazer um di&#xe1;rio alimentar. Escreva todos os alimentos ingeridos durante o dia, as quantidades e hor&#xe1;rios em que fez as refei&#xe7;&#xf5;es. Facilmente, voc&#xea; perceber&#xe1; o erro e onde est&#xe1; o excesso. O di&#xe1;rio alimentar servir&#xe1; como um pux&#xe3;o de orelha para quem est&#xe1; fazendo uma alimenta&#xe7;&#xe3;o inadequada. Mas, por outro lado, dar&#xe1; um est&#xed;mulo grande quando perceber que est&#xe1; com disciplina e determina&#xe7;&#xe3;o, conseguindo colocar alimentos saud&#xe1;veis em todas as refei&#xe7;&#xf5;es e reduzindo a quantidade dos alimentos menos saud&#xe1;veis.&quot; (Roberta Stella, nutricionista chefe do programa de emagrecimento Dieta e Sa&#xfa;de)&#xa;&#xa;&#xa;11. Hidrate-se&#xa;&quot;Beba pelo menos dois litros, mais ou menos oito copos de &#xe1;gua todos os dias. A &#xe1;gua ajuda na hidrata&#xe7;&#xe3;o da pele e &#xe9; fundamental como meio de transporte de algumas vitaminas hidrossol&#xfa;veis como a vitamina B1, B2, B6, B12 e a vitamina C. Al&#xe9;m disso, a &#xe1;gua &#xe9; essencial para que o corpo fique disposto durante todo o dia.&quot; (Rosana Farah, nutricionista e professora dos cursos de gradua&#xe7;&#xe3;o em nutri&#xe7;&#xe3;o da Universidade Presbiteriana Mackenzie)&#xa;&#xa;&#xa;12.Ataque as frutas&#xa;&quot;Consuma entre tr&#xea;s e cinco por&#xe7;&#xf5;es de frutas todos os dias. Laranjas, ma&#xe7;&#xe3;s, peras, melancia, tangerina, entre outras, s&#xe3;o as melhores fontes naturais de vitaminas, minerais e fibras. Esses tr&#xea;s componentes auxiliam o bom funcionamento do nosso intestino e auxiliam o nosso metabolismo a continuar ativo mesmo nos intervalos entres as refei&#xe7;&#xf5;es.&quot; (Rosana Farah, nutricionista e professora dos cursos de gradua&#xe7;&#xe3;o em nutri&#xe7;&#xe3;o da Universidade Presbiteriana Mackenzie)&#xa;&#xa;&#xa;13. Deixe o a&#xe7;&#xfa;car de lado&#xa;&quot;Alimentos que t&#xea;m uma grande quantidade de a&#xe7;&#xfa;car refinado s&#xe3;o dotados de processos qu&#xed;micos na sua produ&#xe7;&#xe3;o e possuem alt&#xed;ssimo &#xed;ndice de glicose, que aumentam os &#xed;ndices de glicemia do corpo. Essas caracter&#xed;sticas, aceleram o envelhecimento, aumentam flacidez por desestruturar o col&#xe1;geno da pele e ainda possuem calorias, por&#xe9;m s&#xe3;o desprovidos de nutrientes. Hoje em dia encontramos ado&#xe7;antes naturais como a sucralose, derivada da cana de a&#xe7;&#xfa;car, por&#xe9;m sem calorias e sem alto &#xed;ndice glic&#xea;mico e a stevia, derivado de uma planta natural.&quot; (Daniela Jobst, nutricionista da Cl&#xed;nica NutriJobst)&#xa;&#xa;&#xa;14. Consumir alimentos fontes de antioxidantes&#xa;&quot;As subst&#xe2;ncias antioxidantes bloqueiam a a&#xe7;&#xe3;o dos radicais livres no organismo, prevenindo a oxida&#xe7;&#xe3;o das c&#xe9;lulas. Esses elementos s&#xe3;o capazes de prevenir o aparecimento de tumores, o envelhecimento precoce e outras doen&#xe7;as. Alimentos com cores fortes, como tomate, goiaba, rom&#xe3;, cenoura, ab&#xf3;bora, manga, a&#xe7;a&#xed;, berinjela, uva, folhas verdes, legumes e br&#xf3;colis, s&#xe3;o ricos em antioxidantes.&quot; (Daniela Jobst, nutricionista da Cl&#xed;nica NutriJobst)&#xa;&#xa;&#xa;15.Saiba o que voc&#xea; est&#xe1; comendo&#xa;&quot;O essencial &#xe9; entender que as calorias s&#xe3;o o combust&#xed;vel para o nosso organismo e que, sem elas, o nosso corpo fica sem energia. Escolher os alimentos s&#xf3; pelo n&#xfa;mero de calorias n&#xe3;o &#xe9; o mais indicado. Muitas vezes as calorias n&#xe3;o s&#xe3;o os principais perigos dos alimentos. O que na verdade faz toda a diferen&#xe7;a na hora de uma alimenta&#xe7;&#xe3;o saud&#xe1;vel &#xe9; a qualidade de nutrientes. A quantidade de gorduras, por exemplo. Por isso &#xe9; importante ler os componentes de cada alimento.&quot; (Camila Leonel, nutricionista e Especialista em Adolesc&#xea;ncia Universidade Federal de S&#xe3;o Paulo)&#xa;&#xa;&#xa;16.Saiba combinar os alimentos&#xa; &quot;O segredo da boa alimenta&#xe7;&#xe3;o est&#xe1; em combinar todos os tipos de nutrientes como carboidratos, prote&#xed;nas, gorduras, minerais, vitaminas, fibras e &#xe1;gua. A regra geral &#xe9; que n&#xe3;o h&#xe1; um tipo de alimento que deva deixar completamente a sua dieta, mas sim quantidades de nutrientes que devem ser controladas. Tudo &#xe9; uma quest&#xe3;o de variar o card&#xe1;pio, n&#xe3;o deixar de fora nenhum tipo de alimento e sempre comer em pequenas por&#xe7;&#xf5;es ou quantidades.&quot; (Camila Leonel, nutricionista e Especialista em Adolesc&#xea;ncia Universidade Federal de S&#xe3;o Paulo)&#xa;&#xa;&#xa;17. Coma sem medo&#xa;&quot;Hoje s&#xe3;o tantas informa&#xe7;&#xf5;es sobre a alimenta&#xe7;&#xe3;o que as pessoas ficam com medo de comer. Quem procura uma dieta j&#xe1; n&#xe3;o sabe mais se &#xe9; bom ou n&#xe3;o comer certo alimento, se &#xe9; saud&#xe1;vel deixar de ingerir certas comidas ou que tipo de subst&#xe2;ncia engorda. Comer &#xe9; importante, vital para a vida. Para quem tem d&#xfa;vidas sobre dietas, a alimenta&#xe7;&#xe3;o b&#xe1;sica que nossos av&#xf4;s conheciam e praticavam, ainda &#xe9; uma boa dica por ter todos os tipos de nutrientes que o corpo precisa.&quot; (Ana Maria Roma Devorais, nutricionista especializada em dist&#xfa;rbios alimentares)&#xa;&#xa;&#xa;18. Procure o que voc&#xea; gosta&#xa; &quot;Comer de tudo um pouco, de todos os grupos de alimentos. Cereais (prefira as vers&#xf5;es integrais), gr&#xe3;os, carnes/aves/peixes, frutas, verduras, leite e derivados e at&#xe9; mesmo as guloseimas. Praticar uma alimenta&#xe7;&#xe3;o saud&#xe1;vel tamb&#xe9;m &#xe9; saber comer alimentos &quot;n&#xe3;o t&#xe3;o saud&#xe1;veis&quot;, mas que s&#xe3;o apetitosos e fazem parte da cultura, da tradi&#xe7;&#xe3;o de uma fam&#xed;lia. N&#xe3;o d&#xe1; para comer s&#xf3; guloseimas , mas n&#xe3;o podemos deixar colocar em nossas refei&#xe7;&#xf5;es aquelas comidas que d&#xe3;o sensa&#xe7;&#xe3;o de bem-estar.&quot; (Ana Maria Roma Devorais, nutricionista especializada em dist&#xfa;rbios alimentares)&#xa;"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Padr&#xe3;o"/>
+            </Property>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtDietaSaudavel.setCaretPosition(0);"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
