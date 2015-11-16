@@ -26,9 +26,11 @@ public class Main extends javax.swing.JFrame {
         btnIMC = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         mtlayerpnlNutricao = new javax.swing.JLayeredPane();
-        jButton1 = new javax.swing.JButton();
+        btnDieta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblIMC = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         BoasVindas = new javax.swing.JLabel();
@@ -68,14 +70,19 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(btnIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         mtlayerpnlFerramentas.setLayer(btnIMC, javax.swing.JLayeredPane.DEFAULT_LAYER);
         mtlayerpnlFerramentas.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         pnlPai.addTab("Ferramentas", mtlayerpnlFerramentas);
 
-        jButton1.setText("Dieta");
+        btnDieta.setText("Dieta");
+        btnDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDietaActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Opção 2");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -86,35 +93,49 @@ public class Main extends javax.swing.JFrame {
 
         jButton4.setText("Opção 3");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Seu IMC é:");
+
+        lblIMC.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblIMC.setText("IMC");
+
         javax.swing.GroupLayout mtlayerpnlNutricaoLayout = new javax.swing.GroupLayout(mtlayerpnlNutricao);
         mtlayerpnlNutricao.setLayout(mtlayerpnlNutricaoLayout);
         mtlayerpnlNutricaoLayout.setHorizontalGroup(
             mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mtlayerpnlNutricaoLayout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(281, 281, 281))
-            .addGroup(mtlayerpnlNutricaoLayout.createSequentialGroup()
-                .addGap(324, 324, 324)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mtlayerpnlNutricaoLayout.createSequentialGroup()
+                .addContainerGap(176, Short.MAX_VALUE)
+                .addGroup(mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mtlayerpnlNutricaoLayout.createSequentialGroup()
+                        .addComponent(btnDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton3)
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(235, 235, 235))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblIMC)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         mtlayerpnlNutricaoLayout.setVerticalGroup(
             mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mtlayerpnlNutricaoLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblIMC)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
-        mtlayerpnlNutricao.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(btnDieta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         mtlayerpnlNutricao.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         mtlayerpnlNutricao.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(lblIMC, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         pnlPai.addTab("Nutrição", mtlayerpnlNutricao);
 
@@ -153,7 +174,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(BoasVindas, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                        .addComponent(BoasVindas, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnLogout)
@@ -201,15 +222,32 @@ public class Main extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDietaActionPerformed
+        // TODO add your handling code here:
+        //Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
+        
+        //if (user.IMC() >= 18 && user.IMC() <= 25)
+            //new DietaIMC18a25().setVisible(true);
+            
+        //else if (user.IMC() >25)
+            //new DietaIMC25acima().setVisible(true);
+            
+        //else if (user.IMC() <18)
+            //new DietaIMC18abaixo().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDietaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel BoasVindas;
+    private javax.swing.JButton btnDieta;
     private javax.swing.JButton btnIMC;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblIMC;
     private javax.swing.JLayeredPane mtlayerpnlFerramentas;
     private javax.swing.JLayeredPane mtlayerpnlNutricao;
     private javax.swing.JTabbedPane pnlPai;
