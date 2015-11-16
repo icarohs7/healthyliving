@@ -227,7 +227,7 @@ public class Main extends javax.swing.JFrame {
         //Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
         
         //if (user.IMC() >= 18 && user.IMC() <= 25)
-            new DietaIMC18a25().setVisible(true);
+            //new DietaIMC18a25().setVisible(true);
             
         //else if (user.IMC() >25)
             //new DietaIMC25acima().setVisible(true);
