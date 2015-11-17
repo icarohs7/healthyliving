@@ -3,14 +3,17 @@ package com.trabalhopac.healthyliving;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-//@author Carlos, Suellen, Vitor e Ícaro
+/**
+ *
+ * @author Carlos, Suellen, Vitor e Ícaro
+ */
 public class CalcIMC extends javax.swing.JFrame {
 
     float altura, massa, imc;
 
     //Creates new form CalcIMC
     public CalcIMC() {
-        initComponents();
+	initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -191,65 +194,65 @@ public class CalcIMC extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        imc();
+	imc();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
 
-        dispose();
+	dispose();
 
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void jTMassaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTMassaKeyPressed
 
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            imc();
-        }
+	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+	    imc();
+	}
     }//GEN-LAST:event_jTMassaKeyPressed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
-        new Main().setVisible(true);
-        dispose();
+	// TODO add your handling code here:
+	new MainForm().setVisible(true);
+	dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        //Abre a mensagem de diálogo para fechar o programa
-        int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
-        
-        if (sair == JOptionPane.YES_OPTION) {
-            System.exit(0); //Fecha o programa
-        }
+	//Abre a mensagem de diálogo para fechar o programa
+	int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
+
+	if (sair == JOptionPane.YES_OPTION) {
+	    System.exit(0); //Fecha o programa
+	}
     }//GEN-LAST:event_btnSairActionPerformed
 
     public void imc() {
 
-        String resultado = null;
+	String resultado = null;
 
-        altura = Float.valueOf(jTAltura.getText()); //Recebe o texto do campo altura
-        massa = Float.valueOf(jTMassa.getText()); //Recebe o texto do campo altura
+	altura = Float.valueOf(jTAltura.getText()); //Recebe o texto do campo altura
+	massa = Float.valueOf(jTMassa.getText()); //Recebe o texto do campo altura
 
-        imc = massa / (altura * altura); //Calcula o imc
+	imc = massa / (altura * altura); //Calcula o imc
 
-        jLImc.setText(String.valueOf(imc)); //Seta o resultado no label
+	jLImc.setText(String.valueOf(imc)); //Seta o resultado no label
 
-        if (imc <= 18.5) {
-            resultado = "Abaixo do peso.";
-        } else if (imc > 18.5 && imc < 25) {
-            resultado = "Peso normal.";
-        } else if (imc >= 25 && imc < 30) {
-            resultado = "Sobrepeso.";
-        } else if (imc >= 30 && imc < 35) {
-            resultado = "Obesidade I.";
-        } else if (imc >= 35 && imc < 40) {
-            resultado = "Obesidade II (severa).";
-        } else if (imc >= 40) {
-            resultado = "Obesidade III (mórbita).";
-        }
+	if (imc <= 18.5) {
+	    resultado = "Abaixo do peso.";
+	} else if (imc > 18.5 && imc < 25) {
+	    resultado = "Peso normal.";
+	} else if (imc >= 25 && imc < 30) {
+	    resultado = "Sobrepeso.";
+	} else if (imc >= 30 && imc < 35) {
+	    resultado = "Obesidade I.";
+	} else if (imc >= 35 && imc < 40) {
+	    resultado = "Obesidade II (severa).";
+	} else if (imc >= 40) {
+	    resultado = "Obesidade III (mórbita).";
+	}
 
-        jLResultado.setText(resultado); //Seta a resposta no label
+	jLResultado.setText(resultado); //Seta a resposta no label
 
     }
 
