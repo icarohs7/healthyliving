@@ -226,22 +226,24 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
 	//new DicasDeNutricao().setVisible(true);
 	dispose();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDietaActionPerformed
-        // TODO add your handling code here:
-	//Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
 
+	//Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
         //if (user.IMC() >= 18 && user.IMC() <= 25)
 	//new DietaIMC18a25().setVisible(true);
-        //else if (user.IMC() >25)
+	//else if (user.IMC() >25)
 	//new DietaIMC25acima().setVisible(true);
-        //else if (user.IMC() <18)
+	//else if (user.IMC() <18)
 	//new DietaIMC18abaixo().setVisible(true);
+	
 	dispose();
+
     }//GEN-LAST:event_btnDietaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

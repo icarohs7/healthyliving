@@ -241,19 +241,20 @@ public class ControleDeCalorias extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCaloriasKeyPressed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
-        new MainForm().setVisible(true);
-        dispose();
+
+	new MainForm().setVisible(true);
+	dispose();
+
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-        //Abre a mensagem de diálogo para fechar o programa
-        int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
-        
-        if (sair == JOptionPane.YES_OPTION) {
-            System.exit(0); //Fecha o programa
-        }
+
+	//Abre a mensagem de diálogo para fechar o programa
+	int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
+
+	if (sair == JOptionPane.YES_OPTION) {
+	    System.exit(0); //Fecha o programa
+	}
     }//GEN-LAST:event_btnSairActionPerformed
 
     void addAlimento() {

@@ -7,7 +7,7 @@ package com.trabalhopac.healthyliving;
 public class FormularioDeInformacoes extends javax.swing.JFrame {
 
     public FormularioDeInformacoes() {
-        initComponents();
+	initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -131,12 +131,11 @@ public class FormularioDeInformacoes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdadeActionPerformed
-        // TODO add your handling code here:
+	// TODO add your handling code here:
     }//GEN-LAST:event_txtIdadeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        dispose();
+	dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,8 +16,8 @@ public class LoginForm extends javax.swing.JFrame {
 
     //Creates new form LoginForm
     public LoginForm() {
-        initComponents();
-        dicaDoDia();
+	initComponents();
+	dicaDoDia();
     }
 
     @SuppressWarnings("unchecked")
@@ -181,39 +181,39 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        loginUser();
+	loginUser();
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
 
-        //Se o usuário pressionar enter na tela de login
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            loginUser();
-        }
+	//Se o usuário pressionar enter na tela de login
+	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+	    loginUser();
+	}
 
     }//GEN-LAST:event_txtPassKeyPressed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
-        //Abre o navegador na tela de Cadastro
-        link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
+	//Abre o navegador na tela de Cadastro
+	link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
 
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-        //Abre o navegador na tela de Restauração de Senha
-        link.browse("http://healthyliving.aduv.com.br/?url=newpass");
+	//Abre o navegador na tela de Restauração de Senha
+	link.browse("http://healthyliving.aduv.com.br/?url=newpass");
 
     }//GEN-LAST:event_jLabel2MouseClicked
 
     void loginUser() {
 
-	new Thread(){
+	new Thread() {
 	    @Override
-	    public void run(){
-		
+	    public void run() {
+
 		progresso.setVisible(true);
 		progresso.setIndeterminate(true);
 
@@ -234,30 +234,29 @@ public class LoginForm extends javax.swing.JFrame {
 		}
 
 		progresso.setVisible(false);
-		
+
 	    }
 	}.start();
-	
+
     }
 
     private void dicaDoDia() {
 
-        /**
-         * Cria uma tarefa paralela ao programa
-         * Para que não seja necessário ele esperar a execução desse bloco
-         * Para depois continuar
-         */
-        new Thread() {
+	/**
+	 * Cria uma tarefa paralela ao programa Para que não seja necessário ele
+	 * esperar a execução desse bloco Para depois continuar
+	 */
+	new Thread() {
 
-            @Override
-            public void run() {
+	    @Override
+	    public void run() {
 
-                //Faz a conexão ao servidor, e recebe a dica do dia
-                txtDica.setText(conexao.dicaDoDia());
+		//Faz a conexão ao servidor, e recebe a dica do dia
+		txtDica.setText(conexao.dicaDoDia());
 
-            }
+	    }
 
-        }.start();
+	}.start();
 
     }
 
