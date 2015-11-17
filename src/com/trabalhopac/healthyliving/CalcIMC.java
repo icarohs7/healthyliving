@@ -3,7 +3,10 @@ package com.trabalhopac.healthyliving;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-//@author Carlos, Suellen, Vitor e Ícaro
+/**
+ *
+ * @author Carlos, Suellen, Vitor e Ícaro
+ */
 public class CalcIMC extends javax.swing.JFrame {
 
     float altura, massa, imc;
@@ -210,7 +213,7 @@ public class CalcIMC extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
-        new Main().setVisible(true);
+        new MainForm().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

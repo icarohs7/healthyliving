@@ -3,16 +3,19 @@ package com.trabalhopac.healthyliving;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-//@author Carlos, Suellen, Vitor e Ícaro
-public class TelaLogin extends javax.swing.JFrame {
+/**
+ *
+ * @author Carlos, Suellen, Vitor e Ícaro
+ */
+public class LoginForm extends javax.swing.JFrame {
 
     //Chama as Classes
     ConexaoHTTP conexao = new ConexaoHTTP();
     ArquivoUsuario arquivo = new ArquivoUsuario();
     Hyperlink link = new Hyperlink();
 
-    //Creates new form TelaLogin
-    public TelaLogin() {
+    //Creates new form LoginForm
+    public LoginForm() {
         initComponents();
         dicaDoDia();
     }
@@ -30,6 +33,8 @@ public class TelaLogin extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        progresso = new javax.swing.JProgressBar();
+        progresso.setVisible(false);
         jPanel2 = new javax.swing.JPanel();
         lblDicaDoDia = new javax.swing.JLabel();
         txtDica = new javax.swing.JTextArea();
@@ -84,14 +89,16 @@ public class TelaLogin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUser)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword)
-                    .addComponent(btnLogin)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(progresso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblUser)
+                        .addComponent(txtUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(lblPassword)
+                        .addComponent(btnLogin)
+                        .addComponent(txtPass, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -114,7 +121,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(progresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -201,22 +210,34 @@ public class TelaLogin extends javax.swing.JFrame {
 
     void loginUser() {
 
-        conexao.login(txtUser.getText(), txtPass.getText());
+	new Thread(){
+	    @Override
+	    public void run(){
+		
+		progresso.setVisible(true);
+		progresso.setIndeterminate(true);
 
-        //Se a variável for igual a true
-        if (conexao.login) {
+		conexao.login(txtUser.getText(), txtPass.getText());
 
-            arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
-            new Main().setVisible(true); //Tona a janela Main visível
-            dispose(); //Fecha a Janela atual
+		//Se a variável for igual a true
+		if (conexao.login) {
 
-        } else {
+		    arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
+		    new MainForm().setVisible(true); //Tona a janela Main visível
+		    dispose(); //Fecha a Janela atual
 
-            //Abre uma mensagem de erro
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
+		} else {
 
-        }
+		    //Abre uma mensagem de erro
+		    JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
 
+		}
+
+		progresso.setVisible(false);
+		
+	    }
+	}.start();
+	
     }
 
     private void dicaDoDia() {
@@ -240,35 +261,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        ArquivoUsuario arquivo = new ArquivoUsuario();
-
-        //Look and feel do programa
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("GTK+".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        if (arquivo.CheckUser()) {
-            new Main().setVisible(true);
-        } else {
-            new TelaLogin().setVisible(true);
-        }
-
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
@@ -279,6 +271,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblDicaDoDia;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
+    private javax.swing.JProgressBar progresso;
     private javax.swing.JTextArea txtDica;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;

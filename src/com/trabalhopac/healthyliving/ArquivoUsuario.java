@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//@author carlos
+/**
+ *
+ * @author Carlos, Suellen, Vitor e Ícaro
+ */
 public class ArquivoUsuario {
 
     File arquivo = new File(System.getProperty("user.dir") + "/userdata.dat");

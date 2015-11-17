@@ -11,7 +11,10 @@ import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//@author carlos
+/**
+ *
+ * @author Carlos, Suellen, Vitor e Ícaro
+ */
 public class ConexaoHTTP {
 
     public String nome;

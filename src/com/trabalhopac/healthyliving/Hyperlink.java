@@ -7,7 +7,10 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//@author carlos
+/**
+ *
+ * @author Carlos, Suellen, Vitor e Ícaro
+ */
 public class Hyperlink {
 
     public void browse(String url) {
