@@ -17,6 +17,7 @@ public class LoginForm extends javax.swing.JFrame {
     //Creates new form LoginForm
     public LoginForm() {
 	initComponents();
+        this.setLocationRelativeTo(null); 
 	dicaDoDia();
     }
 
@@ -182,7 +183,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
 	loginUser();
-
+    
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
