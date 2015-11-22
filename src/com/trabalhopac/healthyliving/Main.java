@@ -20,7 +20,7 @@ public class Main {
 	//</editor-fold>
 
 	if (arquivo.CheckUser()) {
-	    new MainForm().setVisible(true);
+	    new MainForm(arquivo.Ler()).setVisible(true);
 	} else {
 	    new LoginForm().setVisible(true);
 	}

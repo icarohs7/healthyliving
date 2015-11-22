@@ -1,13 +1,10 @@
 package com.trabalhopac.healthyliving;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author icaro
+ * @author Carlos, Suellen, Vitor e Ícaro
  */
 public class DietaForm extends javax.swing.JFrame implements Runnable {
 
@@ -15,10 +12,10 @@ public class DietaForm extends javax.swing.JFrame implements Runnable {
 
     public DietaForm(String dieta) {
 
-	initComponents();
+        initComponents();
 
-	this.dieta = dieta;
-	new Thread(this).start();
+        this.dieta = dieta;
+        new Thread(this).start();
 
     }
 
@@ -100,36 +97,33 @@ public class DietaForm extends javax.swing.JFrame implements Runnable {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
 
-	new MainForm().setVisible(true);
-	dispose();
+        new MainForm().setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
 
-	//Abre a mensagem de diálogo para fechar o programa
-	int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
+        //Abre a mensagem de diálogo para fechar o programa
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
 
-	if (sair == JOptionPane.YES_OPTION) {
-	    System.exit(0); //Fecha o programa
-	}
+        if (sair == JOptionPane.YES_OPTION) {
+            System.exit(0); //Fecha o programa
+        }
 
     }//GEN-LAST:event_btnSairActionPerformed
 
     @Override
     public void run() {
 
-	String site = "http://healthyliving.aduv.com.br/admin/dietas/dieta.php";
-	String parametros = "?dieta=" + dieta;
+        String site = "http://healthyliving.aduv.com.br/admin/dietas/dieta.php";
+        String parametros = "dieta=" + dieta;
+        
+        StringBuilder resposta = new ConexaoHTTP().httpBuffer(site, parametros);
+        htmlPane.setText(resposta.toString());
 
-	try {
-	    htmlPane.setPage(site + parametros);
-	} catch (IOException ex) {
-	    Logger.getLogger(DietaForm.class.getName()).log(Level.SEVERE, null, ex);
-	}
-	
-	txtLoading.setVisible(false);
-	progresso.setVisible(false);
+        txtLoading.setVisible(false);
+        progresso.setVisible(false);
 
     }
 

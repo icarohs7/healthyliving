@@ -223,7 +223,7 @@ public class LoginForm extends javax.swing.JFrame {
 		if (conexao.login) {
 
 		    arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
-		    new MainForm().setVisible(true); //Tona a janela Main visível
+		    new MainForm(conexao.nome).setVisible(true); //Tona a janela Main visível
 		    dispose(); //Fecha a Janela atual
 
 		} else {
