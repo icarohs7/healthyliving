@@ -1,22 +1,44 @@
 package com.trabalhopac.healthyliving;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
  * @author Carlos, Suellen, Vitor e Ícaro
  */
-public class MainForm extends javax.swing.JFrame {
+public class MainForm extends javax.swing.JFrame implements Runnable {
 
     ArquivoUsuario arquivo = new ArquivoUsuario();
+    ConexaoHTTP conn = new ConexaoHTTP();
+
+    String usuario;
+
+    float peso;
+    float altura;
 
     //Creates new form MainForm
     public MainForm() {
 
-	initComponents();
+        initComponents();
 
-	//Pega o Escrever gravado no arquivo, e forma a mensagem de boas vindas
-	BoasVindas.setText("Olá " + arquivo.Ler());
+        //Pega o Escrever gravado no arquivo, e forma a mensagem de boas vindas
+        this.usuario = arquivo.Ler();
+        BoasVindas.setText("Olá " + this.usuario);
+
+    }
+
+    //Entra com o usuário informado por parâmetro
+    public MainForm(String user) {
+
+        initComponents();
+
+        //Pega o usuário informado por parâmetro, e forma a mensagem de boas vindas
+        this.usuario = user;
+        BoasVindas.setText("Olá " + user);
 
     }
 
@@ -192,59 +214,86 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
 
-	//Abre a mensagem de diálogo para fechar o programa
-	int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
+        //Abre a mensagem de diálogo para fechar o programa
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
 
-	if (sair == JOptionPane.YES_OPTION) {
-	    System.exit(0); //Fecha o programa
-	}
+        if (sair == JOptionPane.YES_OPTION) {
+            System.exit(0); //Fecha o programa
+        }
 
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnIMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMCActionPerformed
 
-	//Torna a janela CalcIMC visível
-	new CalcIMC().setVisible(true);
-	dispose();
+        //Torna a janela CalcIMC visível
+        new CalcIMC().setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_btnIMCActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
 
-	arquivo.LogoutUser(); //Executa o método que faz logout do usuário
-	new LoginForm().setVisible(true); //Torna a janela TelaLogin visível
-	dispose(); //Fecha a Janela atual
+        arquivo.LogoutUser(); //Executa o método que faz logout do usuário
+        new LoginForm().setVisible(true); //Torna a janela TelaLogin visível
+        dispose(); //Fecha a Janela atual
 
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
 
-	//Torna a janela ControleDeCalorias visível
-	new ControleDeCalorias().setVisible(true);
-	dispose();
+        //Torna a janela ControleDeCalorias visível
+        new ControleDeCalorias().setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-	//new DicasDeNutricao().setVisible(true);
-	dispose();
+        //new DicasDeNutricao().setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDietaActionPerformed
 
-	//Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
+        //Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
         //if (user.IMC() >= 18 && user.IMC() <= 25)
-	//new DietaIMC18a25().setVisible(true);
-	//else if (user.IMC() >25)
-	//new DietaIMC25acima().setVisible(true);
-	//else if (user.IMC() <18)
-	//new DietaIMC18abaixo().setVisible(true);
-	
-	dispose();
+        //new DietaIMC18a25().setVisible(true);
+        //else if (user.IMC() >25)
+        //new DietaIMC25acima().setVisible(true);
+        //else if (user.IMC() <18)
+        //new DietaIMC18abaixo().setVisible(true);
+        //new DietaForm("imc18a25").setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_btnDietaActionPerformed
+
+    /**
+     * Para chamar esse método, use o seguinte
+     *
+     * new Thread(this).start();
+     *
+     * Ele inicia a thread. Esse método busca o peso e altura do Banco de Dados
+     */
+    @Override
+    public void run() {
+
+        String site = "http://healthyliving.aduv.com.br/admin/consulta.php";
+        String parametros = "usuario=" + this.usuario;
+
+        JSONObject resposta = conn.httpJson(site, parametros);
+
+        try {
+
+            this.altura = Float.valueOf(resposta.getString("Altura"));
+            this.peso = Float.valueOf(resposta.getString("Peso"));
+
+        } catch (JSONException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel BoasVindas;

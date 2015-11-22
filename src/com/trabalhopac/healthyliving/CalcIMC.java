@@ -13,7 +13,7 @@ public class CalcIMC extends javax.swing.JFrame {
 
     //Creates new form CalcIMC
     public CalcIMC() {
-	initComponents();
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -99,11 +99,6 @@ public class CalcIMC extends javax.swing.JFrame {
         );
 
         btnVoltar.setText("Voltar");
-        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVoltarMouseClicked(evt);
-            }
-        });
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -194,65 +189,75 @@ public class CalcIMC extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-	imc();
+        imc();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-
-	dispose();
-
-    }//GEN-LAST:event_btnVoltarMouseClicked
-
     private void jTMassaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTMassaKeyPressed
 
-	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-	    imc();
-	}
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            imc();
+        }
+        
     }//GEN-LAST:event_jTMassaKeyPressed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-	// TODO add your handling code here:
-	new MainForm().setVisible(true);
-	dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-	//Abre a mensagem de diálogo para fechar o programa
-	int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
 
-	if (sair == JOptionPane.YES_OPTION) {
-	    System.exit(0); //Fecha o programa
-	}
+        //Abre a mensagem de diálogo para fechar o programa
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Saindo...", JOptionPane.YES_NO_OPTION);
+
+        if (sair == JOptionPane.YES_OPTION) {
+            System.exit(0); //Fecha o programa
+        }
+        
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+
+        new MainForm().setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     public void imc() {
 
-	String resultado = null;
+        String resultado = null;
 
-	altura = Float.valueOf(jTAltura.getText()); //Recebe o texto do campo altura
-	massa = Float.valueOf(jTMassa.getText()); //Recebe o texto do campo altura
+        altura = toFloat(jTAltura.getText()); //Recebe o texto do campo altura
+        massa = toFloat(jTMassa.getText()); //Recebe o texto do campo altura
 
-	imc = massa / (altura * altura); //Calcula o imc
+        imc = massa / (altura * altura); //Calcula o imc
+        
+        jLImc.setText(String.format("%.2f", imc)); //Seta o resultado no label
 
-	jLImc.setText(String.valueOf(imc)); //Seta o resultado no label
+        if (imc <= 18.5) {
+            resultado = "Abaixo do peso.";
+        } else if (imc > 18.5 && imc < 25) {
+            resultado = "Peso normal.";
+        } else if (imc >= 25 && imc < 30) {
+            resultado = "Sobrepeso.";
+        } else if (imc >= 30 && imc < 35) {
+            resultado = "Obesidade I.";
+        } else if (imc >= 35 && imc < 40) {
+            resultado = "Obesidade II (severa).";
+        } else if (imc >= 40) {
+            resultado = "Obesidade III (mórbita).";
+        }
 
-	if (imc <= 18.5) {
-	    resultado = "Abaixo do peso.";
-	} else if (imc > 18.5 && imc < 25) {
-	    resultado = "Peso normal.";
-	} else if (imc >= 25 && imc < 30) {
-	    resultado = "Sobrepeso.";
-	} else if (imc >= 30 && imc < 35) {
-	    resultado = "Obesidade I.";
-	} else if (imc >= 35 && imc < 40) {
-	    resultado = "Obesidade II (severa).";
-	} else if (imc >= 40) {
-	    resultado = "Obesidade III (mórbita).";
-	}
+        jLResultado.setText(resultado); //Seta a resposta no label
 
-	jLResultado.setText(resultado); //Seta a resposta no label
+    }
+
+    /**
+     * Método que recebe um valor de uma string e converte para float. Ele
+     * suprime o problema de usar vírgula, e retorna o valor em float.
+     *
+     * @param valor Tem ser uma string com valor em float
+     * @return Retorna em float
+     */
+    public float toFloat(String valor) {
+
+        return Float.valueOf(valor.replaceAll(",", "."));
 
     }
 
