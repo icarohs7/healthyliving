@@ -14,7 +14,6 @@ public class CalcIMC extends javax.swing.JFrame {
     //Creates new form CalcIMC
     public CalcIMC() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -186,6 +185,7 @@ public class CalcIMC extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -199,7 +199,7 @@ public class CalcIMC extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             imc();
         }
-        
+
     }//GEN-LAST:event_jTMassaKeyPressed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -210,7 +210,7 @@ public class CalcIMC extends javax.swing.JFrame {
         if (sair == JOptionPane.YES_OPTION) {
             System.exit(0); //Fecha o programa
         }
-        
+
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -221,14 +221,25 @@ public class CalcIMC extends javax.swing.JFrame {
 
     public void imc() {
 
-        String resultado = null;
-
         altura = toFloat(jTAltura.getText()); //Recebe o texto do campo altura
         massa = toFloat(jTMassa.getText()); //Recebe o texto do campo altura
 
-        imc = massa / (altura * altura); //Calcula o imc
-        
+        imc = getImc(massa, altura); //Calcula o IMC
         jLImc.setText(String.format("%.2f", imc)); //Seta o resultado no label
+
+        jLResultado.setText(getTipoImc(imc)); //Seta a resposta no label
+
+    }
+
+    public float getImc(float massa, float altura) {
+
+        return (massa / (altura * altura));
+
+    }
+
+    public String getTipoImc(float imc) {
+
+        String resultado = null;
 
         if (imc <= 18.5) {
             resultado = "Abaixo do peso.";
@@ -244,7 +255,7 @@ public class CalcIMC extends javax.swing.JFrame {
             resultado = "Obesidade III (mórbita).";
         }
 
-        jLResultado.setText(resultado); //Seta a resposta no label
+        return resultado;
 
     }
 

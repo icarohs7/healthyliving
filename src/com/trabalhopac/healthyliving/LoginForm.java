@@ -1,7 +1,11 @@
 package com.trabalhopac.healthyliving;
 
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -12,13 +16,11 @@ public class LoginForm extends javax.swing.JFrame {
     //Chama as Classes
     ConexaoHTTP conexao = new ConexaoHTTP();
     ArquivoUsuario arquivo = new ArquivoUsuario();
-    Hyperlink link = new Hyperlink();
 
     //Creates new form LoginForm
     public LoginForm() {
-	initComponents();
-        this.setLocationRelativeTo(null); 
-	dicaDoDia();
+        initComponents();
+        dicaDoDia();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,9 +38,11 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         progresso = new javax.swing.JProgressBar();
         progresso.setVisible(false);
+        progresso.setIndeterminate(true);
         jPanel2 = new javax.swing.JPanel();
         lblDicaDoDia = new javax.swing.JLabel();
-        txtDica = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Healthy Living");
@@ -133,19 +137,21 @@ public class LoginForm extends javax.swing.JFrame {
         lblDicaDoDia.setForeground(new java.awt.Color(255, 0, 0));
         lblDicaDoDia.setText("Dica do Dia");
 
-        txtDica.setEditable(false);
-        txtDica.setTabSize(4);
-        txtDica.setText("Carregando...");
+        jEditorPane1.setEditable(false);
+        jEditorPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jEditorPane1.setContentType("text/html"); // NOI18N
+        jEditorPane1.setText("Carregando...");
+        jScrollPane1.setViewportView(jEditorPane1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDicaDoDia, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                    .addComponent(txtDica))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(lblDicaDoDia, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -153,8 +159,8 @@ public class LoginForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDicaDoDia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtDica, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -178,101 +184,110 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-	loginUser();
-    
+        loginUser();
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
 
-	//Se o usuário pressionar enter na tela de login
-	if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-	    loginUser();
-	}
+        //Se o usuário pressionar enter na tela de login
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            loginUser();
+        }
 
     }//GEN-LAST:event_txtPassKeyPressed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
-	//Abre o navegador na tela de Cadastro
-	link.browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
+        //Abre o navegador na tela de Cadastro
+        new Hyperlink().browse("http://healthyliving.aduv.com.br/?url=cadastro&menu=3");
 
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-	//Abre o navegador na tela de Restauração de Senha
-	link.browse("http://healthyliving.aduv.com.br/?url=newpass");
+        //Abre o navegador na tela de Restauração de Senha
+        new Hyperlink().browse("http://healthyliving.aduv.com.br/?url=passreset");
 
     }//GEN-LAST:event_jLabel2MouseClicked
 
     void loginUser() {
 
-	new Thread() {
-	    @Override
-	    public void run() {
+        new Thread() {
+            @Override
+            public void run() {
 
-		progresso.setVisible(true);
-		progresso.setIndeterminate(true);
+                progresso.setVisible(true);
 
-		conexao.login(txtUser.getText(), txtPass.getText());
+                JSONObject resposta;
 
-		//Se a variável for igual a true
-		if (conexao.login) {
+                resposta = conexao.login(txtUser.getText(), txtPass.getText());
 
-		    arquivo.Escrever(conexao.nome); //Recebe o nome do usuário e grava no arquivo
-		    new MainForm(conexao.nome).setVisible(true); //Tona a janela Main visível
-		    dispose(); //Fecha a Janela atual
+                try {
 
-		} else {
+                    //Se a variável for igual a true
+                    if (resposta.getBoolean("Login")) {
 
-		    //Abre uma mensagem de erro
-		    JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
+                        arquivo.Escrever(resposta.toString()); //Recebe o nome do usuário e grava no arquivo
+                        new MainForm().setVisible(true); //Tona a janela Main visível
+                        dispose(); //Fecha a Janela atual
 
-		}
+                    } else {
 
-		progresso.setVisible(false);
+                        //Abre uma mensagem de erro
+                        JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!");
 
-	    }
-	}.start();
+                    }
+
+                } catch (JSONException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                progresso.setVisible(false);
+
+            }
+        }.start();
 
     }
 
     private void dicaDoDia() {
 
-	/**
-	 * Cria uma tarefa paralela ao programa Para que não seja necessário ele
-	 * esperar a execução desse bloco Para depois continuar
-	 */
-	new Thread() {
+        /**
+         * Cria uma tarefa paralela ao programa Para que não seja necessário ele
+         * esperar a execução desse bloco Para depois continuar
+         */
+        new Thread() {
 
-	    @Override
-	    public void run() {
+            @Override
+            public void run() {
 
-		//Faz a conexão ao servidor, e recebe a dica do dia
-		txtDica.setText(conexao.dicaDoDia());
+                //Faz a conexão ao servidor, e recebe a dica do dia
+                jEditorPane1.setText(conexao.dicaDoDia());
 
-	    }
+            }
 
-	}.start();
+        }.start();
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblDicaDoDia;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
     private javax.swing.JProgressBar progresso;
-    private javax.swing.JTextArea txtDica;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

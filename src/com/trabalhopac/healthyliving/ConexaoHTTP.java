@@ -17,8 +17,6 @@ import org.json.JSONObject;
  */
 public class ConexaoHTTP {
 
-    public String nome;
-    public boolean login;
     public int totalDeCalorias;
 
     public StringBuilder httpBuffer(String site, String parametros) {
@@ -92,21 +90,14 @@ public class ConexaoHTTP {
 
     }
 
-    public void login(String usuario, String senha) {
+    public JSONObject login(String usuario, String senha) {
 
         String parametros = "usuario=" + usuario + "&senha=" + senha;
         String url = "http://healthyliving.aduv.com.br/admin/login.php";
 
         JSONObject resposta = httpJson(url, parametros);
 
-        try {
-
-            this.nome = resposta.getString("Nome"); //Atribui o nome do usuário recebido
-            this.login = resposta.getBoolean("Login"); //Retorna true se o usuário e senha forem válidos
-
-        } catch (JSONException ex) {
-            Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return resposta;
 
     }
 
@@ -134,21 +125,12 @@ public class ConexaoHTTP {
      */
     public String dicaDoDia() {
 
-//	String parametros = "variavel=valor";
         String url = "http://healthyliving.aduv.com.br/connect/dica.php";
-        String dica = null;
+        StringBuilder resposta;
 
-        JSONObject resposta;
-        try {
+        resposta = httpBuffer(url, "");
 
-            resposta = httpJson(url, "");
-            dica = resposta.getString("Dica");
-
-        } catch (JSONException ex) {
-            Logger.getLogger(ConexaoHTTP.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return dica;
+        return resposta.toString();
 
     }
 

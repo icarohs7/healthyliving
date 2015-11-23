@@ -20,11 +20,11 @@ public class Main {
 	//</editor-fold>
 
 	if (arquivo.CheckUser()) {
-	    new MainForm(arquivo.Ler()).setVisible(true);
+	    new MainForm().setVisible(true);
 	} else {
 	    new LoginForm().setVisible(true);
 	}
 
     }
-    
+
 }
