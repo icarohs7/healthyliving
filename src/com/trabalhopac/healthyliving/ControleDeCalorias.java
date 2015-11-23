@@ -14,6 +14,7 @@ public class ControleDeCalorias extends javax.swing.JFrame {
     //Contrutor da classe
     public ControleDeCalorias() {
 	initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     @SuppressWarnings("unchecked")

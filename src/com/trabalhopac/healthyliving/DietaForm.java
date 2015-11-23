@@ -13,7 +13,8 @@ public class DietaForm extends javax.swing.JFrame implements Runnable {
     public DietaForm(String dieta) {
 
         initComponents();
-
+        
+        this.setLocationRelativeTo(null); 
         this.dieta = dieta;
         new Thread(this).start();
 

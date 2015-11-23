@@ -14,6 +14,7 @@ public class CalcIMC extends javax.swing.JFrame {
     //Creates new form CalcIMC
     public CalcIMC() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -214,7 +215,6 @@ public class CalcIMC extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
 
-        new MainForm().setVisible(true);
         dispose();
 
     }//GEN-LAST:event_btnVoltarActionPerformed
