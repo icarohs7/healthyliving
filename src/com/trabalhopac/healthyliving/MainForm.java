@@ -1,5 +1,7 @@
 package com.trabalhopac.healthyliving;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -10,7 +12,7 @@ import org.json.JSONObject;
  *
  * @author Carlos, Suellen, Vitor e Ícaro
  */
-public class MainForm extends javax.swing.JFrame implements Runnable {
+public class MainForm extends javax.swing.JFrame {
 
     ArquivoUsuario arquivo = new ArquivoUsuario();
     ConexaoHTTP conn = new ConexaoHTTP();
@@ -20,55 +22,204 @@ public class MainForm extends javax.swing.JFrame implements Runnable {
     float peso;
     float altura;
     float imc;
-    JSONObject my_obj = new JSONObject();
 
     //Creates new form MainForm
     public MainForm() {
-        
-        initComponents();
-        new Thread(this).start();
-        conferedados();
-        start(); //Método usado para atribuir valor às labels
-        centralizar();
-       
 
-        //Pega o Escrever gravado no arquivo, e forma a mensagem de boas vindas
-        this.usuario = arquivo.Ler();
-        BoasVindas.setText("Olá, " + this.usuario);
-    }
-
-    //Entra com o usuário informado por parâmetro
-    public MainForm(String user) {
-        
         initComponents();
-        new Thread(this).start();
-        conferedados();
-        start();
-        centralizar();
-       
-        //Pega o usuário informado por parâmetro, e forma a mensagem de boas vindas
-        this.usuario = user;
-        BoasVindas.setText("Olá, " + user);
+        setDados();
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnLogout = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
-        BoasVindas = new javax.swing.JLabel();
-        lblIMC = new javax.swing.JLabel();
-        btnDieta = new javax.swing.JButton();
+        pnlPai = new javax.swing.JTabbedPane();
+        mtlayerpnlFerramentas = new javax.swing.JLayeredPane();
         btnIMC = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        mtlayerpnlNutricao = new javax.swing.JLayeredPane();
+        btnDieta = new javax.swing.JButton();
+        btnDicaDoDia = new javax.swing.JButton();
         lblPeso = new javax.swing.JLabel();
         lblAltura = new javax.swing.JLabel();
-        lblEstado = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblIMC = new javax.swing.JLabel();
+        lblTipoImc = new javax.swing.JLabel();
+        mtlayerpnlUsuario = new javax.swing.JLayeredPane();
+        lblInfoNome = new javax.swing.JLabel();
+        lblInfoIdade = new javax.swing.JLabel();
+        lblInfoSexo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        lblBoasVindas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Healthy Living");
+
+        btnIMC.setText("Calculadora de IMC");
+        btnIMC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIMCActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Controle de Calorias");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        mtlayerpnlFerramentas.setLayer(btnIMC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlFerramentas.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout mtlayerpnlFerramentasLayout = new javax.swing.GroupLayout(mtlayerpnlFerramentas);
+        mtlayerpnlFerramentas.setLayout(mtlayerpnlFerramentasLayout);
+        mtlayerpnlFerramentasLayout.setHorizontalGroup(
+            mtlayerpnlFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mtlayerpnlFerramentasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mtlayerpnlFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(436, Short.MAX_VALUE))
+        );
+        mtlayerpnlFerramentasLayout.setVerticalGroup(
+            mtlayerpnlFerramentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mtlayerpnlFerramentasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
+
+        pnlPai.addTab("Ferramentas", mtlayerpnlFerramentas);
+
+        btnDieta.setText("Dieta");
+        btnDieta.setMaximumSize(new java.awt.Dimension(145, 29));
+        btnDieta.setMinimumSize(new java.awt.Dimension(145, 29));
+        btnDieta.setPreferredSize(new java.awt.Dimension(145, 29));
+        btnDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDietaActionPerformed(evt);
+            }
+        });
+
+        btnDicaDoDia.setText("Dica do dia");
+        btnDicaDoDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDicaDoDiaActionPerformed(evt);
+            }
+        });
+
+        lblPeso.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblPeso.setText("Peso:");
+
+        lblAltura.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblAltura.setText("Altura:");
+
+        lblIMC.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblIMC.setText("IMC:");
+
+        lblTipoImc.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblTipoImc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        mtlayerpnlNutricao.setLayer(btnDieta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(btnDicaDoDia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(lblPeso, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(lblAltura, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(lblIMC, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlNutricao.setLayer(lblTipoImc, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout mtlayerpnlNutricaoLayout = new javax.swing.GroupLayout(mtlayerpnlNutricao);
+        mtlayerpnlNutricao.setLayout(mtlayerpnlNutricaoLayout);
+        mtlayerpnlNutricaoLayout.setHorizontalGroup(
+            mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mtlayerpnlNutricaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDicaDoDia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addGroup(mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPeso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                    .addComponent(lblIMC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTipoImc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        mtlayerpnlNutricaoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDicaDoDia, btnDieta});
+
+        mtlayerpnlNutricaoLayout.setVerticalGroup(
+            mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mtlayerpnlNutricaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mtlayerpnlNutricaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mtlayerpnlNutricaoLayout.createSequentialGroup()
+                        .addComponent(lblPeso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAltura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblIMC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTipoImc, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mtlayerpnlNutricaoLayout.createSequentialGroup()
+                        .addComponent(btnDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDicaDoDia, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
+
+        pnlPai.addTab("Nutrição", mtlayerpnlNutricao);
+
+        lblInfoNome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblInfoNome.setText("Nome:");
+
+        lblInfoIdade.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblInfoIdade.setText("Idade:");
+
+        lblInfoSexo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblInfoSexo.setText("Sexo:");
+
+        jButton1.setText("Alterar dados");
+
+        mtlayerpnlUsuario.setLayer(lblInfoNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlUsuario.setLayer(lblInfoIdade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlUsuario.setLayer(lblInfoSexo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mtlayerpnlUsuario.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout mtlayerpnlUsuarioLayout = new javax.swing.GroupLayout(mtlayerpnlUsuario);
+        mtlayerpnlUsuario.setLayout(mtlayerpnlUsuarioLayout);
+        mtlayerpnlUsuarioLayout.setHorizontalGroup(
+            mtlayerpnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mtlayerpnlUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mtlayerpnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInfoNome)
+                    .addComponent(lblInfoIdade)
+                    .addComponent(lblInfoSexo)
+                    .addComponent(jButton1))
+                .addContainerGap(495, Short.MAX_VALUE))
+        );
+        mtlayerpnlUsuarioLayout.setVerticalGroup(
+            mtlayerpnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mtlayerpnlUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblInfoNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInfoIdade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInfoSexo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        pnlPai.addTab("Usuário", mtlayerpnlUsuario);
 
         btnLogout.setText("Mudar Usuário");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -84,54 +235,12 @@ public class MainForm extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        BoasVindas.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-
-        lblIMC.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblIMC.setText("Seu IMC é:");
-
-        btnDieta.setText("Dieta");
-        btnDieta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDietaActionPerformed(evt);
-            }
-        });
-
-        btnIMC.setText("Calculadora de IMC");
-        btnIMC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIMCActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Controle de Calorias");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblBoasVindas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBoasVindas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                lblBoasVindasMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        lblPeso.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblPeso.setText("Seu Peso é: Kg");
-        lblPeso.setToolTipText("Clique para mudar");
-        lblPeso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblPesoMouseClicked(evt);
-            }
-        });
-
-        lblAltura.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblAltura.setText("Sua Altura é: m");
-        lblAltura.setToolTipText("Clique para mudar");
-
-        lblEstado.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
-        jLabel1.setText("Clique nos Campos para alterar (Peso e Altura)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,62 +248,33 @@ public class MainForm extends javax.swing.JFrame implements Runnable {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblBoasVindas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnIMC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDieta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(271, 271, 271)
+                        .addComponent(btnSair))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 99, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSair, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(lblIMC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(BoasVindas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblPeso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAltura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnLogout)))
                 .addContainerGap())
+            .addComponent(pnlPai)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(BoasVindas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPeso)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlPai)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAltura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblEstado)
-                        .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnLogout)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSair))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIMC))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblBoasVindas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        lblPeso.getAccessibleContext().setAccessibleDescription("");
-
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -212,13 +292,14 @@ public class MainForm extends javax.swing.JFrame implements Runnable {
 
         //Torna a janela CalcIMC visível
         new CalcIMC().setVisible(true);
+
     }//GEN-LAST:event_btnIMCActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
 
         arquivo.LogoutUser(); //Executa o método que faz logout do usuário
         new LoginForm().setVisible(true); //Torna a janela TelaLogin visível
-        dispose();; //Fecha a Janela atual
+        dispose(); //Fecha a Janela atual
 
     }//GEN-LAST:event_btnLogoutActionPerformed
 
@@ -226,147 +307,106 @@ public class MainForm extends javax.swing.JFrame implements Runnable {
 
         //Torna a janela ControleDeCalorias visível
         new ControleDeCalorias().setVisible(true);
-        dispose();
 
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void btnDicaDoDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDicaDoDiaActionPerformed
+
+        new DicaDoDia().setVisible(true);
+
+    }//GEN-LAST:event_btnDicaDoDiaActionPerformed
+
     private void btnDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDietaActionPerformed
 
-        //Necessária impletemtação de armazenamento do IMC do usuário para abrir uma dieta condizente com o mesmo
-        if (imc >=18 && imc <= 25){
-            new DietaForm("imc18a25").setVisible(true);
+        if (peso != 0 || altura != 0) {
+
+            new DietaForm(imc).setVisible(true);
+
+        } else {
+
+            //chama form que adiciona dados
+            
         }
-        
-        else if (imc < 18){
-            new DietaForm("imc18abaixo").setVisible(true);
-        }
-        
-        else if (imc > 25){
-            new DietaForm("imc25acima").setVisible(true);
-        }
-        dispose();
+
 
     }//GEN-LAST:event_btnDietaActionPerformed
 
-    private void lblPesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPesoMouseClicked
-        // TODO add your handling code here:
-        alterarpeso();
-    }//GEN-LAST:event_lblPesoMouseClicked
+    private void lblBoasVindasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBoasVindasMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        pnlPai.setSelectedIndex(2);
 
-    /**
-     * Para chamar esse método, use o seguinte
-     *
-     * new Thread(this).start();
-     *
-     * Ele inicia a thread. Esse método busca o peso e altura do Banco de Dados
-     */
-    @Override
-    public void run() {
+    }//GEN-LAST:event_lblBoasVindasMouseClicked
 
-        String site = "http://healthyliving.aduv.com.br/admin/consulta.php";
-        String parametros = "usuario=" + this.usuario;
+    private void setDados() {
 
-        JSONObject resposta = conn.httpJson(site, parametros);
+        //Obtém o JSON do arquivo
+        JSONObject userdata = arquivo.lerJson();
 
         try {
 
-            this.altura = Float.valueOf(resposta.getString("Altura"));
-            this.peso = Float.valueOf(resposta.getString("Peso"));
-            
-            
+            lblBoasVindas.setText("Olá " + userdata.getString("Nome"));
+
+            this.peso = Float.parseFloat(userdata.getString("Peso"));
+            this.altura = Float.parseFloat(userdata.getString("Altura"));
+            this.imc = new CalcIMC().getImc(peso, altura);
+
+            lblPeso.setText("Peso: " + peso + "kg");
+            lblAltura.setText("Altura: " + altura + "m");
+            lblIMC.setText("IMC: " + String.format("%.2f", imc));
+            lblTipoImc.setText(new CalcIMC().getTipoImc(imc));
+
+            lblInfoNome.setText("Nome: " + userdata.getString("Nome"));
 
         } catch (JSONException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public void start(){
-        lblPeso.setText("Seu Peso é: "+ String.format("%.2f", peso) + " Kg");
-        lblAltura.setText("Sua Altura é: "+ String.format("%.2f", altura) + " m");
-        imc = peso / (altura*altura);
-        lblIMC.setText("Seu IMC é: "+ String.format("%.2f", imc) + " Kg/m²");
-        
-        alterarestado();
-    }
-    
-    public void conferedados(){
-            if (peso == 0){
-                alterarpeso();
-            }
-            
-            if (altura == 0){
-                alteraraltura();
-            }
-    }
-    
-    public void alterarpeso(){
-        String temp = null;
-        while (temp == null || temp.equals("")){
-            temp = JOptionPane.showInputDialog(null, "Informe seu peso (use . para separar decimais)", "Alterar peso", JOptionPane.PLAIN_MESSAGE);
-        }
-        peso = Float.parseFloat(temp);
-        lblPeso.setText("Seu Peso é: "+ String.format("%.2f", peso) + " Kg");
-        imc = peso / (altura*altura);
-        lblIMC.setText("Seu IMC é: "+ String.format("%.2f", imc) + " Kg/m²");
-        alterarestado();
-    }
-    
-    public void alteraraltura(){
-        String temp = null;
-        while (temp == null || temp.equals("")){
-            temp = JOptionPane.showInputDialog(null, "Informe sua altura (use . para separar decimais)", "Altura não encontrada", JOptionPane.PLAIN_MESSAGE);
-        }
-        altura = Float.parseFloat(temp);
-        lblAltura.setText("Sua Altura é: "+ String.format("%.2f", altura) + " m");
-        imc = peso / (altura*altura);
-        lblIMC.setText("Seu IMC é: "+ String.format("%.2f", imc) + " Kg/m²");
-        alterarestado();
-    }
-    
-    public void alterarestado(){
-        if (imc <= 18.5) {
-            lblEstado.setText("Abaixo do peso.");
-        } else if (imc > 18.5 && imc < 25) {
-            lblEstado.setText("Peso normal.");
-        } else if (imc >= 25 && imc < 30) {
-            lblEstado.setText("Sobrepeso.");
-        } else if (imc >= 30 && imc < 35) {
-            lblEstado.setText("Obesidade I.");
-        } else if (imc >= 35 && imc < 40) {
-            lblEstado.setText("Obesidade II (severa).");
-        } else if (imc >= 40) {
-            lblEstado.setText("Obesidade III (mórbita).");
-        }
-    }
-    
-    public void gravararquivo() throws JSONException{ //mds é mt dificil usar json =\
-        
-    }
-    
-    public void lerarquivo() throws JSONException{ //mds²
-       
-    }
-    
-    public void centralizar() {
-        this.setLocationRelativeTo(null); 
+
     }
 
+    /**
+     * Calcula a idade de acordo com a data passada.
+     *
+     * @param data
+     * @return A idade da pessoa
+     * @author Isaias Pfaffenseller
+     */
+    public static Integer getIdade(Date data) {
+
+        Calendar dataNascimento = Calendar.getInstance();
+        dataNascimento.setTime(data);
+        Calendar dataAtual = Calendar.getInstance();
+
+        Integer diferencaMes = dataAtual.get(Calendar.MONTH) - dataNascimento.get(Calendar.MONTH);
+        Integer diferencaDia = dataAtual.get(Calendar.DAY_OF_MONTH) - dataNascimento.get(Calendar.DAY_OF_MONTH);
+        Integer idade = (dataAtual.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR));
+
+        if (diferencaMes < 0 || (diferencaMes == 0 && diferencaDia < 0)) {
+            idade--;
+        }
+
+        return idade;
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel BoasVindas;
+    private javax.swing.JButton btnDicaDoDia;
     private javax.swing.JButton btnDieta;
     private javax.swing.JButton btnIMC;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAltura;
-    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblBoasVindas;
     private javax.swing.JLabel lblIMC;
+    private javax.swing.JLabel lblInfoIdade;
+    private javax.swing.JLabel lblInfoNome;
+    private javax.swing.JLabel lblInfoSexo;
     private javax.swing.JLabel lblPeso;
+    private javax.swing.JLabel lblTipoImc;
+    private javax.swing.JLayeredPane mtlayerpnlFerramentas;
+    private javax.swing.JLayeredPane mtlayerpnlNutricao;
+    private javax.swing.JLayeredPane mtlayerpnlUsuario;
+    private javax.swing.JTabbedPane pnlPai;
     // End of variables declaration//GEN-END:variables
 }

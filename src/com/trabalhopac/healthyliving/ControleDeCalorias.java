@@ -14,7 +14,6 @@ public class ControleDeCalorias extends javax.swing.JFrame {
     //Contrutor da classe
     public ControleDeCalorias() {
 	initComponents();
-        this.setLocationRelativeTo(null); 
     }
 
     @SuppressWarnings("unchecked")
@@ -47,11 +46,6 @@ public class ControleDeCalorias extends javax.swing.JFrame {
         jLabel1.setInheritsPopupMenu(false);
 
         btnVoltar.setText("Voltar");
-        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVoltarMouseClicked(evt);
-            }
-        });
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -209,13 +203,8 @@ public class ControleDeCalorias extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-
-	dispose();
-
-    }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
@@ -243,7 +232,6 @@ public class ControleDeCalorias extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
 
-	new MainForm().setVisible(true);
 	dispose();
 
     }//GEN-LAST:event_btnVoltarActionPerformed

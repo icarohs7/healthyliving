@@ -2,11 +2,15 @@ package com.trabalhopac.healthyliving;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -18,81 +22,83 @@ public class ArquivoUsuario {
 
     public void Escrever(String texto) {
 
-	try {
+        try {
 
-	    if (!arquivo.exists()) {
-		arquivo.createNewFile();
-	    }
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
+            }
 
-	    try (FileWriter fw = new FileWriter(arquivo)) {
-		fw.write(texto);
-	    }
+            try (FileWriter fw = new FileWriter(arquivo)) {
+                fw.write(texto);
+            }
 
-	} catch (IOException e) {
-	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
-	}
+        } catch (IOException e) {
+            Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
+        }
 
     }
 
-    public String Ler() {
+    public JSONObject lerJson() {
 
-	String texto = null;
+        JSONObject userdata = null;
 
-	try {
+        try (FileReader fr = new FileReader(arquivo); BufferedReader br = new BufferedReader(fr)) {
 
-	    try (FileReader fr = new FileReader(arquivo); BufferedReader br = new BufferedReader(fr)) {
-		texto = br.readLine();
-	    }
+            userdata = new JSONObject(br.readLine());
 
-	} catch (Exception e) {
-	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
-	}
+        } catch (IOException | JSONException ex) {
+            Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-	return texto;
+        return userdata;
 
     }
 
     public boolean CheckUser() {
 
-	boolean result = false;
-	String texto;
+        boolean result = false;
+        String texto;
 
-	try {
+        try {
 
-	    try (FileReader fr = new FileReader(arquivo); BufferedReader br = new BufferedReader(fr)) {
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
+            }
 
-		texto = br.readLine();
+            try (FileReader fr = new FileReader(arquivo); BufferedReader br = new BufferedReader(fr)) {
 
-		//Verifica se o texto do arquivo não é igual a null
-		if (!texto.equals("null")) {
-		    result = true;
-		}
+                texto = br.readLine();
 
-	    }
+                //Verifica se o texto do arquivo não é igual a null
+                if (texto != null) {
+                    result = true;
+                }
 
-	} catch (Exception e) {
-	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
-	}
+            }
 
-	return result;
+        } catch (Exception e) {
+            Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return result;
 
     }
 
     public void LogoutUser() {
 
-	try {
+        try {
 
-	    if (!arquivo.exists()) {
-		arquivo.createNewFile();
-	    }
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
+            }
 
-	    try (FileWriter fw = new FileWriter(arquivo)) {
-		fw.write("null");
-	    }
+            try (FileWriter fw = new FileWriter(arquivo)) {
+                fw.write("");
+            }
 
-	} catch (IOException e) {
-	    Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
-	}
+        } catch (IOException e) {
+            Logger.getLogger(ArquivoUsuario.class.getName()).log(Level.SEVERE, null, e);
+        }
 
     }
 
